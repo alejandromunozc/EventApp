@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-08-16T01:42:05.756Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36" etag="tbyqvNlEeFdcPkq_hdoL" version="13.6.2" type="github">
+<mxfile host="app.diagrams.net" modified="2020-08-16T01:43:26.295Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36" etag="qsOVXJJbXQ68ok9Cb2Cx" version="13.6.2" type="github">
   <diagram id="PLfb2DMcHPXeEHQQHA8u" name="Page-1">
     <mxGraphModel dx="1242" dy="662" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
@@ -453,9 +453,6 @@
         </mxCell>
         <mxCell id="aum1AoG0NpGCuyagNsFS-262" value="Admin" style="whiteSpace=wrap;html=1;rounded=0;gradientColor=#ffd966;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
           <mxGeometry x="1190" y="410" width="120" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="aum1AoG0NpGCuyagNsFS-268" value="Modules / Frontend" style="whiteSpace=wrap;html=1;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;gradientColor=#7ea6e0;" vertex="1" parent="1">
-          <mxGeometry x="1040" y="90" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="aum1AoG0NpGCuyagNsFS-275" value="" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;exitX=0.365;exitY=0.91;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" target="aum1AoG0NpGCuyagNsFS-274">
           <mxGeometry relative="1" as="geometry">
