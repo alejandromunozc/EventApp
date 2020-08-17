@@ -1,17 +1,15 @@
 const express = require('express');
 const app = express();
+require('./lib/connect');
 
 const { config } = require('./config/index');
-const eventsApi = require('./routes/events');
-const { logErrors, errorHandler } = require('./utils/middleware/errorHandlers');
+const speakers = require('./routes/speaker.routes');
 
 app.use(express.json());
 
-eventsApi(app);
+app.use(speakers);
 
-app.use(logErrors);
-app.use(errorHandler);
 
 app.listen(config.port, function() {
-    //console.log(`listening http://localhost:${config.port}`);
+    console.log(`listening http://localhost:${config.port}`);
 });
