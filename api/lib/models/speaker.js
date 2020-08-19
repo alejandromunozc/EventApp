@@ -8,7 +8,7 @@ const speakerSchema = new Schema({
     bio: {
         type: String
     },
-    rol: {
+    role: {
         type: String
     },
     twitter: {

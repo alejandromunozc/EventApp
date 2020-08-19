@@ -18,11 +18,20 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    rol: {
+    role: {
         type: String,
-        required: true
+        required: true,
+        enum: [
+            "admin",
+            "organizer",
+            "visitor"
+        ],
+        default: "visitor"
     },
     img_url: {
+        type: String
+    },
+    organization: {
         type: String
     }
 }, {
@@ -35,7 +44,7 @@ userSchema.methods.encryptPass = async password => {
 }
 
 userSchema.methods.matchPass = async function(password) {
-    await bcrypt.compare(password, this.password);
+    return await bcrypt.compare(password, this.password);
 }
 
 module.exports = model('User', userSchema);
