@@ -4,15 +4,18 @@ const jwt = require('jsonwebtoken');
 function authVerifyToken(req, res, next) {
     const token = req.headers['x-access-token'];
     if (!token) {
-        return res.json({
-            auth: false,
-            message: 'No token provided'
-        });
+        return res.json({ message: 'Invalid token' });
     }
 
-    const decodedToken = jwt.verify(token, config.secret);
-    req.userId = decodedToken.id;
-    next();
+    try {
+        const decodedToken = jwt.verify(token, config.secret);
+        req.userId = decodedToken.id;
+        next();
+    } catch (error) {
+        req.tokenError = true;
+        next();
+    }
+
 }
 
 module.exports = authVerifyToken;

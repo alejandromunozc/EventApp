@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const associateSchema = new Schema({
+const partnerSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -15,4 +15,4 @@ const associateSchema = new Schema({
     timestamps: true
 });
 
-module.exports = model('Associate', associateSchema);
+module.exports = model('Partner', partnerSchema);

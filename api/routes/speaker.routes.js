@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const authVerifyToken = require('../controllers/authVerifyToken');
 const router = Router();
 const {
     getSpeakers,
@@ -10,8 +11,8 @@ const {
 
 router.get('/api/speakers', getSpeakers);
 router.get('/api/speakers/:id', getSpeaker);
-router.post('/api/speakers', createSpeaker);
-router.put('/api/speakers/:id', updateSpeaker);
-router.delete('/api/speakers/:id', deleteSpeaker);
+router.post('/api/speakers', authVerifyToken, createSpeaker);
+router.put('/api/speakers/:id', authVerifyToken, updateSpeaker);
+router.delete('/api/speakers/:id', authVerifyToken, deleteSpeaker);
 
 module.exports = router;

@@ -6,10 +6,6 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    username: {
-        type: String,
-        required: true
-    },
     password: {
         type: String,
         required: true
@@ -23,10 +19,8 @@ const userSchema = new Schema({
         required: true,
         enum: [
             "admin",
-            "organizer",
-            "visitor"
-        ],
-        default: "visitor"
+            "organizer"
+        ]
     },
     img_url: {
         type: String

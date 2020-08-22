@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const authVerifyToken = require('../controllers/authVerifyToken');
 const router = Router();
 const {
     getEvents,
@@ -10,8 +11,8 @@ const {
 
 router.get('/api/events', getEvents);
 router.get('/api/events/:id', getEvent);
-router.post('/api/events', createEvent);
-router.put('/api/events/:id', updateEvent);
-router.delete('/api/events/:id', deleteEvent);
+router.post('/api/events', authVerifyToken, createEvent);
+router.put('/api/events/:id', authVerifyToken, updateEvent);
+router.delete('/api/events/:id', authVerifyToken, deleteEvent);
 
 module.exports = router;

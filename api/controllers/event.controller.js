@@ -3,14 +3,22 @@ const eventController = {};
 const eventModel = require('../lib/models/event');
 
 eventController.getEvents = async(req, res) => {
-    const events = await eventModel.find();
-    res.json({ events });
+    try {
+        const events = await eventModel.find();
+        res.json({ events });
+    } catch (error) {
+        res.json({ message: 'Error' });
+    }
 }
 
 eventController.getEvent = async(req, res) => {
-    const { id } = req.params
-    const event = await eventModel.findOne({ _id: id });
-    res.json({ event });
+    const { id } = req.params;
+    try {
+        const event = await eventModel.findOne({ _id: id });
+        res.json({ event });
+    } catch (error) {
+        res.json({ message: 'Error' });
+    }
 }
 
 eventController.createEvent = async(req, res) => {
@@ -36,8 +44,12 @@ eventController.createEvent = async(req, res) => {
         associates,
         schedule
     });
-    await newEvent.save();
-    res.send('event created');
+    try {
+        await newEvent.save();
+        res.json({ id: newEvent.id });
+    } catch (error) {
+        res.json({ message: 'Error' });
+    }
 }
 
 eventController.updateEvent = async(req, res) => {
@@ -52,23 +64,31 @@ eventController.updateEvent = async(req, res) => {
         associates,
         schedule
     } = req.body;
-    await eventModel.findByIdAndUpdate(req.params.id, {
-        name,
-        info,
-        event_url,
-        date,
-        template,
-        logo_url,
-        banner_url,
-        associates,
-        schedule
-    });
-    res.send('event updated');
+    try {
+        await eventModel.findByIdAndUpdate(req.params.id, {
+            name,
+            info,
+            event_url,
+            date,
+            template,
+            logo_url,
+            banner_url,
+            associates,
+            schedule
+        });
+        res.json({ id: req.params.id });
+    } catch (error) {
+        res.json({ message: 'Error' });
+    }
 }
 
 eventController.deleteEvent = async(req, res) => {
-    await eventModel.findByIdAndDelete(req.params.id);
-    res.send('event deleted');
+    try {
+        await eventModel.findByIdAndDelete(req.params.id);
+        res.json({ id: req.params.id });
+    } catch (error) {
+        res.json({ message: 'Error' });
+    }
 }
 
 module.exports = eventController;

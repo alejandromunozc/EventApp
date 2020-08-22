@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const authVerifyToken = require('../controllers/authVerifyToken');
 const router = Router();
 const {
     getOrganizations,
@@ -10,8 +11,8 @@ const {
 
 router.get('/api/organizations', getOrganizations);
 router.get('/api/organizations/:id', getOrganization);
-router.post('/api/organizations', createOrganization);
-router.put('/api/organizations/:id', updateOrganization);
-router.delete('/api/organizations/:id', deleteOrganization);
+router.post('/api/organizations', authVerifyToken, createOrganization);
+router.put('/api/organizations/:id', authVerifyToken, updateOrganization);
+router.delete('/api/organizations/:id', authVerifyToken, deleteOrganization);
 
 module.exports = router;

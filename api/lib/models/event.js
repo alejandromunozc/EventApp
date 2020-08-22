@@ -9,6 +9,10 @@ const eventSchema = new Schema({
         type: String,
         required: true
     },
+    organization: {
+        type: String,
+        required: true
+    },
     event_url: {
         type: String
     },
@@ -16,9 +20,24 @@ const eventSchema = new Schema({
         type: Date,
         required: true
     },
+    start_hour: {
+        type: String
+    },
+    location: {
+        type: String
+    },
+    country: {
+        type: String
+    },
+    city: {
+        type: String
+    },
     template: {
         type: String,
-        default: "template_1"
+        enum: [
+            "classic",
+            "minimalist"
+        ]
     },
     logo_url: {
         type: String
@@ -42,11 +61,18 @@ const eventSchema = new Schema({
             require: true
         },
         speaker: {
-            type: String
+            type: String,
+            require: true
         },
         date: {
-            type: Date
+            type: Date,
+            require: true
+        },
+        hour: {
+            type: String,
+            require: true
         }
+
     }]
 }, {
     timestamps: true
