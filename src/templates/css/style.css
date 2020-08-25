@@ -609,7 +609,7 @@ a.header__nav--item {
 .sponsors__info hr {
   width: 80px;
   margin: 3% 0;
-  border-top: 1px solid var(--primary);
+  border-top: 1px solid white;
 }
 
 .sponsors__company {
@@ -676,6 +676,10 @@ a.header__nav--item {
   display: flex;
   background-color: var(--primary);
   height: 100px;
+}
+
+.footer__logo {
+  width: 180px;
 }
 
 .footer-content {
