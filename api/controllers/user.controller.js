@@ -106,13 +106,13 @@ userController.loginUser = async(req, res) => {
 userController.signupUser = async(req, res) => {
     const {
         name,
-        username,
+        role,
         password,
         email
     } = req.body;
     const user = new userModel({
         name,
-        username,
+        role,
         password,
         email
     });
