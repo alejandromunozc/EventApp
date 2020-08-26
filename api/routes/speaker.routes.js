@@ -1,5 +1,7 @@
 const { Router } = require("express");
-const authVerifyToken = require('../controllers/authVerifyToken');
+const authVerifyToken = require('../middlewares/authVerifyToken');
+const bufferImg = require('../middlewares/bufferImg');
+const s3Upload = require('../middlewares/s3Upload');
 const router = Router();
 const {
     getSpeakers,
@@ -11,8 +13,8 @@ const {
 
 router.get('/api/speakers', getSpeakers);
 router.get('/api/speakers/:id', getSpeaker);
-router.post('/api/speakers', authVerifyToken, createSpeaker);
-router.put('/api/speakers/:id', authVerifyToken, updateSpeaker);
+router.post('/api/speakers', authVerifyToken, bufferImg, s3Upload, createSpeaker);
+router.put('/api/speakers/:id', authVerifyToken, bufferImg, s3Upload, updateSpeaker);
 router.delete('/api/speakers/:id', authVerifyToken, deleteSpeaker);
 
 module.exports = router;

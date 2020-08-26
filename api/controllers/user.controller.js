@@ -3,8 +3,6 @@ const userController = {};
 const userModel = require('../lib/models/user');
 const { config } = require('../config');
 const jwt = require('jsonwebtoken');
-const user = require('../lib/models/user');
-
 
 userController.getUsers = async(req, res) => {
     try {
@@ -46,7 +44,7 @@ userController.createUser = async(req, res) => {
     newUser.password = await newUser.encryptPass(newUser.password);
     try {
         await newUser.save();
-        res.json({ id: user.id });
+        res.json({ user: newUser });
     } catch (error) {
         res.json({ message: 'Error' });
     }
@@ -54,24 +52,20 @@ userController.createUser = async(req, res) => {
 }
 
 userController.updateUser = async(req, res) => {
-    const {
-        name,
-        password,
-        email,
-        role,
-        img_url,
-        organization
-    } = req.body;
+    const { id } = req.params;
+    const user = await userModel.findOne({ _id: id });
+    const newData = {
+        id: req.params.id,
+        name: req.body.name || user.name,
+        password: req.body.password || user.password,
+        email: req.body.email || user.email,
+        role: req.body.role || user.role,
+        organization: req.body.organization || user.organization,
+        img_url: req.body.img_url || user.img_url
+    }
     try {
-        await userModel.findByIdAndUpdate(req.params.id, {
-            name,
-            password,
-            email,
-            role,
-            img_url,
-            organization
-        });
-        res.json({ id: req.params.id });
+        await userModel.findByIdAndUpdate(req.params.id, { $set: newData });
+        res.json({ user: newData });
     } catch (error) {
         res.json({ message: 'Error' });
     }
@@ -103,7 +97,7 @@ userController.loginUser = async(req, res) => {
             expiresIn: 60 * 60 * 24
         })
         res.header('x-access-token', token);
-        res.json({ auth: true, id: user.id });
+        res.json({ auth: true, user: user });
     } catch (error) {
         res.json({ message: 'Error' });
     }
@@ -129,7 +123,7 @@ userController.signupUser = async(req, res) => {
     try {
         user.save();
         res.header('x-access-token', token);
-        res.json({ auth: true, id: user.id });
+        res.json({ auth: true, user: user });
     } catch (error) {
         res.json({ message: 'Error' });
     }

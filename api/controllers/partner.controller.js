@@ -26,17 +26,25 @@ partnerController.createPartner = async(req, res) => {
     const newPartner = new partnerModel({ name, url, img_url });
     try {
         await newPartner.save();
-        res.json({ partner: newPartner.id });
+        res.json({ partner: newPartner });
     } catch (error) {
         res.json({ message: 'Error' });
     }
 }
 
 partnerController.updatePartner = async(req, res) => {
-    const { name, url, img_url } = req.body;
+    const { id } = req.params;
+    const partner = await partnerModel.findOne({ _id: id });
+    const newData = {
+        id: req.params.id,
+        name: req.body.name || partner.name,
+        url: req.body.url || partner.url,
+        img_url: req.body.img_url || partner.img_url
+    }
+
     try {
-        await partnerModel.findByIdAndUpdate(req.params.id, { name, url, img_url });
-        res.json({ id: req.params.id });
+        await partnerModel.findByIdAndUpdate(req.params.id, { $set: newData });
+        res.json({ partner: newData });
     } catch (error) {
         res.json({ message: 'Error' });
     }

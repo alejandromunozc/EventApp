@@ -45,7 +45,7 @@ const eventSchema = new Schema({
     banner_url: {
         type: String
     },
-    associates: {
+    partners: {
         type: [String]
     },
     register: {
@@ -69,6 +69,10 @@ const eventSchema = new Schema({
             require: true
         },
         hour: {
+            type: String,
+            require: true
+        },
+        duration: {
             type: String,
             require: true
         }

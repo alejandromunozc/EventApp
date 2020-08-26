@@ -26,17 +26,29 @@ organizationController.createOrganization = async(req, res) => {
     const newOrganization = new organizationModel({ name, members });
     try {
         await newOrganization.save();
-        res.json({ id: newOrganization.id });
+        res.json({ organization: newOrganization });
     } catch (error) {
         res.json({ message: 'Error' });
     }
 }
 
 organizationController.updateOrganization = async(req, res) => {
-    const { name, members } = req.body;
+    const { id } = req.params;
+    const organization = await organizationModel.findOne({ _id: id });
+    const newData = {
+        id: req.params.id,
+        name: req.body.name || organization.name,
+        members: []
+    }
+
+    if (req.body.members) {
+        newData.members = organization.members;
+        newData.members[newData.members.length] = req.body.members;
+    }
+
     try {
-        await organizationModel.findByIdAndUpdate(req.params.id, { name, members });
-        res.json({ id: req.params.id });
+        await organizationModel.findByIdAndUpdate(req.params.id, { $set: newData });
+        res.json({ organization: newData });
     } catch (error) {
         res.json({ message: 'Error' });
     }

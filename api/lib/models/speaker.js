@@ -2,8 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const speakerSchema = new Schema({
     name: {
-        type: String,
-        required: true
+        type: String
     },
     bio: {
         type: String

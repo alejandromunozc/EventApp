@@ -1,5 +1,7 @@
 const { Router } = require("express");
-const authVerifyToken = require('../controllers/authVerifyToken');
+const authVerifyToken = require('../middlewares/authVerifyToken');
+const bufferImg = require('../middlewares/bufferImg');
+const s3Upload = require('../middlewares/s3Upload');
 const router = Router();
 const {
     getUsers,
@@ -13,8 +15,8 @@ const {
 
 router.get('/api/users', authVerifyToken, getUsers);
 router.get('/api/users/:id', authVerifyToken, getUser);
-router.post('/api/users', createUser);
-router.put('/api/users/:id', authVerifyToken, updateUser);
+router.post('/api/users', authVerifyToken, bufferImg, s3Upload, createUser);
+router.put('/api/users/:id', authVerifyToken, bufferImg, s3Upload, updateUser);
 router.delete('/api/users/:id', authVerifyToken, deleteUser);
 router.post('/api/login', loginUser);
 router.post('/api/signup', signupUser);

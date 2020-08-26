@@ -22,21 +22,31 @@ speakerController.getSpeaker = async(req, res) => {
 }
 
 speakerController.createSpeaker = async(req, res) => {
-    const { name, bio, rol, twitter, img_url } = req.body;
-    const newSpeaker = new SpeackerModel({ name, bio, rol, twitter, img_url });
+    const { name, bio, role, twitter, img_url } = req.body;
+    const newSpeaker = new SpeackerModel({ name, bio, role, twitter, img_url });
     try {
         await newSpeaker.save();
-        res.json({ speaker: newSpeaker.id });
+        res.json({ speaker: newSpeaker });
     } catch (error) {
-        res.json({ message: 'Error' });
+        res.json({ message: error });
     }
 }
 
 speakerController.updateSpeaker = async(req, res) => {
-    const { name, bio, rol, twitter, img_url } = req.body;
+    const { id } = req.params
+    const speaker = await SpeackerModel.findOne({ _id: id });
+    const newData = {
+        id: req.params.id,
+        name: req.body.name || speaker.name,
+        bio: req.body.bio || speaker.bio,
+        role: req.body.role || speaker.role,
+        twitter: req.body.twitter || speaker.twitter,
+        img_url: req.body.img_url || speaker.img_url
+    }
+
     try {
-        await SpeackerModel.findByIdAndUpdate(req.params.id, { name, bio, rol, twitter, img_url });
-        res.json({ id: req.params.id });
+        await SpeackerModel.findByIdAndUpdate(req.params.id, { $set: newData });
+        res.json({ speaker: newData });
     } catch (error) {
         res.json({ message: 'Error' });
     }

@@ -24,59 +24,67 @@ eventController.getEvent = async(req, res) => {
 eventController.createEvent = async(req, res) => {
     const {
         name,
-        info,
         event_url,
+        location,
+        country,
+        city,
         date,
-        template,
-        logo_url,
-        banner_url,
-        associates,
-        schedule
+        start_hour
     } = req.body;
     const newEvent = new eventModel({
         name,
-        info,
         event_url,
+        location,
+        country,
+        city,
         date,
-        template,
-        logo_url,
-        banner_url,
-        associates,
-        schedule
+        start_hour
     });
     try {
         await newEvent.save();
-        res.json({ id: newEvent.id });
+        res.json({ event_url: newEvent });
     } catch (error) {
         res.json({ message: 'Error' });
     }
 }
 
 eventController.updateEvent = async(req, res) => {
-    const {
-        name,
-        info,
-        event_url,
-        date,
-        template,
-        logo_url,
-        banner_url,
-        associates,
-        schedule
-    } = req.body;
+    const { id } = req.params;
+    const event = await eventModel.findOne({ _id: id });
+    const newData = {
+        id: req.params.id,
+        name: req.body.name || event.name,
+        event_url: req.body.event_url || event.event_url,
+        location: req.body.location || event.location,
+        country: req.body.country || event.country,
+        city: req.body.city || event.city,
+        date: req.body.date || event.date,
+        start_hour: req.body.start_hour || event.start_hour,
+        info: req.body.info || event.info,
+        organization: req.body.organization || event.organization,
+        template: req.body.template || event.template,
+        logo_url: req.body.logo_url || event.logo_url,
+        banner_url: req.body.banner_url || event.banner_url,
+        partners: [],
+        register: [],
+        schedule: []
+    }
+    if (req.body.partners) {
+        newData.partners = event.partners;
+        newData.partners[newData.partners.length] = req.body.partners;
+    }
+    if (req.body.register) {
+        newData.register = event.register;
+        newData.register[newData.register.length] = req.body.register;
+    }
+    if (req.body.schedule) {
+        newData.schedule = event.schedule;
+        newData.schedule[newData.schedule.length] = req.body.schedule;
+    }
+
     try {
-        await eventModel.findByIdAndUpdate(req.params.id, {
-            name,
-            info,
-            event_url,
-            date,
-            template,
-            logo_url,
-            banner_url,
-            associates,
-            schedule
-        });
-        res.json({ id: req.params.id });
+        await eventModel.findByIdAndUpdate(req.params.id, { $set: newData });
+        res.json({ event: newData });
     } catch (error) {
         res.json({ message: 'Error' });
     }

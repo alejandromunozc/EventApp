@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const authVerifyToken = require('../controllers/authVerifyToken');
+const authVerifyToken = require('../middlewares/authVerifyToken');
 const router = Router();
 const {
     getOrganizations,
