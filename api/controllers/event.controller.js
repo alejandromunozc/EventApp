@@ -54,6 +54,7 @@ eventController.updateEvent = async(req, res) => {
     const newData = {
         id: req.params.id,
         name: req.body.name || event.name,
+        event_title: req.body.event_title || event.event_title,
         event_url: req.body.event_url || event.event_url,
         location: req.body.location || event.location,
         country: req.body.country || event.country,
@@ -65,6 +66,7 @@ eventController.updateEvent = async(req, res) => {
         template: req.body.template || event.template,
         logo_url: req.body.logo_url || event.logo_url,
         banner_url: req.body.banner_url || event.banner_url,
+        img_url: req.body.img_url || event.img_url,
         partners: [],
         register: [],
         schedule: []

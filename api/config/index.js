@@ -12,7 +12,8 @@ const config = {
     awsId: process.env.AWS_ID,
     awsSecret: process.env.AWS_SECRET,
     awsBucket: process.env.AWS_BUCKET_NAME,
-    mgApiKey: process.env.MG_API_KEY
+    mgApiKey: process.env.MG_API_KEY,
+    mgDomain: process.env.MG_DOMAIN
 }
 
 module.exports = { config };

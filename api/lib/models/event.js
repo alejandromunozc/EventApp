@@ -5,6 +5,9 @@ const eventSchema = new Schema({
         type: String,
         required: true
     },
+    event_title: {
+        type: String,
+    },
     info: {
         type: String,
         required: true
@@ -44,6 +47,9 @@ const eventSchema = new Schema({
     },
     banner_url: {
         type: String
+    },
+    img_url: {
+
     },
     partners: {
         type: [String]
