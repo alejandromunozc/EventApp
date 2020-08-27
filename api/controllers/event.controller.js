@@ -24,6 +24,8 @@ eventController.getEvent = async(req, res) => {
 eventController.createEvent = async(req, res) => {
     const {
         name,
+        info,
+        organization,
         event_url,
         location,
         country,
@@ -33,6 +35,8 @@ eventController.createEvent = async(req, res) => {
     } = req.body;
     const newEvent = new eventModel({
         name,
+        info,
+        organization,
         event_url,
         location,
         country,
@@ -44,7 +48,7 @@ eventController.createEvent = async(req, res) => {
         await newEvent.save();
         res.json({ event_url: newEvent });
     } catch (error) {
-        res.json({ message: 'Error' });
+        res.json({ message: error });
     }
 }
 
@@ -67,9 +71,7 @@ eventController.updateEvent = async(req, res) => {
         logo_url: req.body.logo_url || event.logo_url,
         banner_url: req.body.banner_url || event.banner_url,
         img_url: req.body.img_url || event.img_url,
-        partners: [],
-        register: [],
-        schedule: []
+        sendedMail: req.body.sendedMail || event.sendedMail
     }
     if (req.body.partners) {
         newData.partners = event.partners;
@@ -88,7 +90,7 @@ eventController.updateEvent = async(req, res) => {
         await eventModel.findByIdAndUpdate(req.params.id, { $set: newData });
         res.json({ event: newData });
     } catch (error) {
-        res.json({ message: 'Error' });
+        res.json({ message: error });
     }
 }
 

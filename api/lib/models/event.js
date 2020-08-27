@@ -49,13 +49,16 @@ const eventSchema = new Schema({
         type: String
     },
     img_url: {
-
+        type: String
     },
     partners: {
         type: [String]
     },
     register: {
         type: [String]
+    },
+    sendedMail: {
+        type: String
     },
     schedule: [{
         title: {

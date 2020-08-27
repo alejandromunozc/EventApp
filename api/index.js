@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 require('./lib/connect');
+require('./lib/cron');
 
 const { config } = require('./config/index');
 const speakers = require('./routes/speaker.routes');

@@ -37,8 +37,7 @@ organizationController.updateOrganization = async(req, res) => {
     const organization = await organizationModel.findOne({ _id: id });
     const newData = {
         id: req.params.id,
-        name: req.body.name || organization.name,
-        members: []
+        name: req.body.name || organization.name
     }
 
     if (req.body.members) {
