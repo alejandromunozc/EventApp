@@ -97,7 +97,7 @@ userController.loginUser = async(req, res) => {
             expiresIn: 60 * 60 * 24
         })
         res.header('x-access-token', token);
-        res.json({ auth: true, user: user });
+        res.json({ auth: true, user: user, token: token });
     } catch (error) {
         res.json({ message: 'Error' });
     }
