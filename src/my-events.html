@@ -69,7 +69,7 @@
               </div>
             </div>
             <div class="collaborators__addnew">
-              <button class="collaborators__button">
+              <button id="addCollaborator" class="collaborators__button">
                 Add new collaborator
               </button>
             </div>
@@ -144,5 +144,17 @@
         </div>
       </div>
     </footer>
+    <div id="modalAddCollaborator" class="modal__addCollaborator">
+      <div class="modal__addCollaborator--content">
+        <span class="close">&times;</span>
+        <h3>Add new collaborator</h3>
+        <form action="">
+          <label for="email__collaborator">Email addres</label><br />
+          <input type="email" name="email" id="email__collaborator" /><br />
+          <button>Submit</button>
+        </form>
+      </div>
+    </div>
+    <script src="./assets/js/index.js"></script>
   </body>
 </html>
