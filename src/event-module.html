@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>EventApp - Create Event</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__content">
+          <img
+            class="header__logo"
+            src="./assets/img/logo-white2x.png"
+            alt="EventApp"
+          />
+        </div>
+      </div>
+    </header>
+    <section class="createEvent">
+      <div class="container">
+        <div class="createEvent__content">
+          <div class="createEvent__header">
+            <h3 class="createEvent__title">
+              Let's go to create an awesome event page <br />
+              First, a little about your event!
+            </h3>
+          </div>
+          <div class="createEvent__form">
+            <form class="createEvent__form--fields" action="">
+              <div class="createEvent__field createEvent__field--title">
+                <label for="title">Event Title</label><br />
+                <input
+                  class="createEvent__form--input"
+                  type="text"
+                  id="title"
+                />
+              </div>
+              <div class="createEvent__field createEvent__field--url">
+                <label for="url">Specify like you want your domain</label><br />
+                <input
+                  class="createEvent__form--input"
+                  placeholder="e.g. event.app/organizarce-name/event-name"
+                  type="text"
+                  id="url"
+                />
+              </div>
+              <div class="createEvent__field createEvent__field--location">
+                <label for="location">Location</label><br />
+                <input
+                  class="createEvent__form--input"
+                  placeholder="Venue name or Address"
+                  type="text"
+                  id="location"
+                />
+              </div>
+              <div
+                class="createEvent__field createEvent__field--country createEvent__field--middle"
+              >
+                <label for="country">Country</label><br />
+                <input
+                  class="createEvent__form--input"
+                  type="text"
+                  id="country"
+                />
+              </div>
+              <div
+                class="createEvent__field createEvent__field--city createEvent__field--middle"
+              >
+                <label for="city">City</label><br />
+                <input class="createEvent__form--input" type="text" id="city" />
+              </div>
+              <div
+                class="createEvent__field createEvent__field--date createEvent__field--middle"
+              >
+                <label for="date">Date</label><br />
+                <input class="createEvent__form--input" type="date" id="date" />
+              </div>
+              <div
+                class="createEvent__field createEvent__field--time createEvent__field--middle"
+              >
+                <label for="time">Start hour</label><br />
+                <input class="createEvent__form--input" type="time" id="time" />
+              </div>
+              <button class="createEvent__form--button">
+                Next… Choose a template
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <img
+            class="footer__logo"
+            src="./assets/img/team_logo_white.png"
+            alt="Code Warriors"
+          />
+          <div class="footer__description">
+            <span>Made with 💚 from Platzi Master | 2020</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
