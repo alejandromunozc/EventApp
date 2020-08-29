@@ -72,7 +72,7 @@ body {
   align-items: center;
 }
 
-.header__user a {
+.header__user--name {
   color: white;
   margin-right: 1em;
   text-decoration: none;
@@ -408,7 +408,6 @@ li.header__nav--item a {
   border-radius: 1em;
   box-shadow: var(--shadow);
   margin: 0 auto;
-  margin-bottom: 36px;
   width: 380px;
 }
 
@@ -772,5 +771,94 @@ li.header__nav--item a {
 @media (max-width: 425px) {
   .header__nav {
     display: none;
+  }
+
+  .header__user--name {
+    display: none;
+  }
+
+  .hero__title {
+    font-size: var(--title);
+  }
+
+  .hero__button {
+    font-size: initial;
+  }
+
+  .cta__content {
+    display: block;
+  }
+
+  .cta__title {
+    flex-direction: column;
+  }
+
+  .cta__title h2 {
+    font-size: var(--little--subtitle);
+    text-align: center;
+    margin: 0;
+  }
+
+  .cta__button {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    font-size: initial;
+  }
+
+  .welcome__options {
+    grid-template-columns: auto;
+  }
+
+  .createEvent__form {
+    width: 100%;
+  }
+
+  .chooseTemplate__options {
+    grid-template-columns: auto;
+  }
+
+  .item__showcase img {
+    width: 100%;
+  }
+
+  .myEvents__content,
+  .organization__content,
+  .collaborators__list,
+  .collaborators__emails {
+    flex-direction: column;
+  }
+
+  .collaborators__emails--item {
+    margin: 0;
+    margin-bottom: calc(var(--space) * 1);
+    width: fit-content;
+  }
+
+  .myEvents__button {
+    width: 100%;
+  }
+
+  .myEvents__cta,
+  .collaborators__button {
+    width: 100%;
+    margin: calc(var(--space) * 2) 0;
+  }
+
+  .currentEvents__list {
+    grid-template-columns: auto;
+  }
+
+  .item__event img {
+    width: 100%;
+  }
+
+  .footer {
+    height: auto;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    padding: calc(var(--space) * 2) 0;
   }
 }

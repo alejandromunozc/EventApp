@@ -9,6 +9,10 @@
   --cta: #f9b6c6;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -672,17 +676,17 @@ a.header__nav--item {
   content: '#';
 }
 
-.footer {
+.minimal__footer {
   display: flex;
   background-color: var(--primary);
   height: 100px;
 }
 
-.footer__logo {
+.minimal__footer--logo {
   width: 180px;
 }
 
-.footer-content {
+.minimal__footer--content {
   display: flex;
   color: white;
   justify-content: space-between;
@@ -690,4 +694,178 @@ a.header__nav--item {
   width: 100%;
   font-weight: 100;
   font-size: 14px;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1em;
+  }
+}
+
+@media (max-width: 425px) {
+  .header {
+    height: auto;
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .main__info {
+    grid-template-columns: auto;
+  }
+
+  .main__details--date {
+    width: auto;
+  }
+
+  .main__details--cta a {
+    display: block;
+    text-align: center;
+  }
+
+  .main__cover img {
+    object-fit: cover;
+    height: 400px;
+  }
+
+  .about__info {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-gap: 1em;
+  }
+
+  .about__content {
+    grid-column: auto;
+    grid-row: auto;
+    padding: 1em;
+    padding-bottom: 3em;
+  }
+
+  .about__cover {
+    grid-column: auto;grid-row: auto;
+  }
+
+  .about__content h2 {
+    margin: 0;
+  }
+
+  .schedule__info hr,
+  .people__list hr,
+  .sponsors__info hr {
+    margin: 2em 0;
+  }
+
+  .toKnow__info {
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-gap: 1em;
+}
+
+  .toKnow__alert {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .toKnow__cover {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .toKnow__cover p {
+    text-align: inherit;
+  }
+
+  .toKnow__location {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .location--cta a {
+    display: block;
+    padding: 1.5em;
+    text-align: center;
+  }
+
+  .toKnow__counter {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin: 6% 0;
+}
+
+  .toKnow__counter--separator {
+    display: none;
+  }
+
+  .toKnow__counter--hours {
+    grid-column: 2 / span 1;
+  }
+
+  .toKnow__counter--title {
+    grid-column: 1 / span 2;
+  }
+
+  .toKnow__counter--minutes {
+    grid-column: 1 / span 1;
+  }
+
+  .toKnow__counter--seconds {
+    grid-column: 2 / span 1;
+  }
+
+  .toKnow__who {
+    width: 100%;
+  }
+
+  .toKnow__who--highlight {
+    font-size: 48px;
+  }
+
+  .people__list--speaker {
+    grid-template-columns: auto;
+  }
+
+  .speaker__img {
+    grid-column: auto;
+  }
+
+  .speaker__name {
+    grid-column: auto;
+  }
+
+  .speaker__position {
+    grid-column: auto;
+  }
+
+  .speaker__name--title {
+    font-size: 32px;
+  }
+
+  .speaker__img--photo {
+    width: 100%;
+    height: 250px;
+  }
+
+  .schedule__list {
+    grid-template-columns: auto;
+    grid-gap: 1em;
+  }
+
+  .item__descriptions {
+    padding: 0;
+  }
+
+  .sponsors__company {
+    grid-template-columns: auto;
+    grid-gap: 2em;
+  }
+
+  .minimal__footer {
+    height: auto;
+  }
+
+  .minimal__footer--content {
+    flex-direction: column;
+    padding: 2em 0;
+  }
 }
