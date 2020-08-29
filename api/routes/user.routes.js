@@ -19,6 +19,6 @@ router.post('/api/users', authVerifyToken, bufferImg, s3Upload, createUser);
 router.put('/api/users/:id', authVerifyToken, bufferImg, s3Upload, updateUser);
 router.delete('/api/users/:id', authVerifyToken, deleteUser);
 router.post('/api/login', loginUser);
-router.post('/api/signup', signupUser);
+router.post('/api/signup', bufferImg, s3Upload, signupUser);
 
 module.exports = router;

@@ -1,6 +1,7 @@
 const userController = {};
 
 const userModel = require('../lib/models/user');
+const organizationModel = require('../lib/models/organization');
 const { config } = require('../config');
 const jwt = require('jsonwebtoken');
 
@@ -41,12 +42,20 @@ userController.createUser = async(req, res) => {
         img_url,
         organization
     });
-    newUser.password = await newUser.encryptPass(newUser.password);
+    console.log('members');
+    let members = await organizationModel.findOne({ name: req.body.organization });
+
+    members.members[members.members.length] = req.body.email;
+    console.log(members);
+    await organizationModel.findByIdAndUpdate(members._id, { $set: members })
+        //newUser.password = await newUser.encryptPass(newUser.password);
     try {
+
         await newUser.save();
         res.json({ user: newUser });
     } catch (error) {
-        res.json({ message: 'Error' });
+        console.log('members 2');
+        res.json({ message: error });
     }
 
 }
@@ -74,7 +83,7 @@ userController.updateUser = async(req, res) => {
 userController.deleteUser = async(req, res) => {
     try {
         await userModel.findByIdAndDelete(req.params.id);
-        res.json({ id: req.params.id });
+        res.json({ id: req.params.id, message: 'User deleted' });
     } catch (error) {
         res.json({ message: 'Error' });
     }
@@ -85,12 +94,12 @@ userController.loginUser = async(req, res) => {
     try {
         const user = await userModel.findOne({ email: email });
         if (!user) {
-            return res.json('User does not exist');
+            return res.json({ message: 'Incorrect email or password' });
         }
 
         const isValid = await user.matchPass(password);
         if (!isValid) {
-            return res.json({ auth: false, token: null });
+            return res.json({ message: 'Incorrect email or password' });
         }
 
         const token = jwt.sign({ id: user.id }, config.secret, {
@@ -108,22 +117,28 @@ userController.signupUser = async(req, res) => {
         name,
         role,
         password,
-        email
+        email,
+        organization,
+        img_url
     } = req.body;
     const user = new userModel({
         name,
         role,
         password,
-        email
+        email,
+        organization,
+        img_url
     });
     user.password = await user.encryptPass(user.password);
     const token = jwt.sign({ id: user._id }, config.secret, {
         expiresIn: 60 * 60 * 24
     });
     try {
-        user.save();
+        const newOrganization = await new organizationModel({ name: req.body.organization });
+        await newOrganization.save();
+        await user.save();
         res.header('x-access-token', token);
-        res.json({ auth: true, user: user });
+        res.json({ auth: true, user: user, token: token });
     } catch (error) {
         res.json({ message: 'Error' });
     }

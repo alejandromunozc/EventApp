@@ -9,8 +9,7 @@ const eventSchema = new Schema({
         type: String,
     },
     info: {
-        type: String,
-        required: true
+        type: String
     },
     organization: {
         type: String,
@@ -62,28 +61,22 @@ const eventSchema = new Schema({
     },
     schedule: [{
         title: {
-            type: String,
-            require: true
+            type: String
         },
         description: {
-            type: String,
-            require: true
+            type: String
         },
         speaker: {
-            type: String,
-            require: true
+            type: String
         },
         date: {
-            type: Date,
-            require: true
+            type: Date
         },
         hour: {
-            type: String,
-            require: true
+            type: String
         },
         duration: {
-            type: String,
-            require: true
+            type: String
         }
 
     }]
