@@ -65,9 +65,6 @@ function ClassicHero(props) {
                       <label>Location</label>
                       <br />
                       <input type="text" id="eventName" />
-                      <div className="login__form--picture">
-                        <h2>LOGO</h2>
-                      </div>
 
                       <button className="button">Submit</button>
                     </form>

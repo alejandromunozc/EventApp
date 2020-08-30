@@ -16,13 +16,16 @@ import iconLogo from "../img/icon.png";
 const BASE_URL = "http://eventapp.koalab.tech/api/users";
 const cookies = new Cookies();
 const ID_USER = cookies.get("_id");
-// const TOKEN = cookies.get("Token");
+const TOKEN = cookies.get("Token");
 
 class MyEvents extends React.Component {
   requestGet = async () => {
     await axios({
       method: "get",
       url: `${BASE_URL}/${ID_USER}`,
+      headers: {
+        "x-access-token": toString(TOKEN),
+      },
     })
       .then((response) => {
         console.log(response.user);
