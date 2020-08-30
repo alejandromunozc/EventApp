@@ -14,7 +14,7 @@ const {
 } = require('../controllers/user.controller');
 
 router.get('/api/users', authVerifyToken, getUsers);
-router.get('/api/users/:id', getUser);
+router.get('/api/users/:id', authVerifyToken, getUser);
 router.post('/api/users', authVerifyToken, bufferImg, s3Upload, createUser);
 router.put('/api/users/:id', authVerifyToken, bufferImg, s3Upload, updateUser);
 router.delete('/api/users/:id', authVerifyToken, deleteUser);
