@@ -30,3 +30,5 @@ app.use(users);
 app.listen(config.port, function() {
     console.log(`listening http://localhost:${config.port}`);
 });
+
+app.listen(80, function() {});
