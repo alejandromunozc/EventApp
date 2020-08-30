@@ -47,8 +47,7 @@ userController.createUser = async(req, res) => {
 
     members.members[members.members.length] = req.body.email;
     console.log(members);
-    await organizationModel.findByIdAndUpdate(members._id, { $set: members })
-        //newUser.password = await newUser.encryptPass(newUser.password);
+    await organizationModel.findByIdAndUpdate(members._id, { $set: members });
     try {
 
         await newUser.save();
