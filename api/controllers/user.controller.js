@@ -104,7 +104,7 @@ userController.loginUser = async(req, res) => {
         const token = jwt.sign({ id: user.id }, config.secret, {
             expiresIn: 60 * 60 * 24
         })
-        res.header('x-access-token', token);
+        res.header('X-ACCESS_TOKEN', token);
         res.json({ auth: true, user: user, token: token });
     } catch (error) {
         res.json({ message: 'Error' });
@@ -136,7 +136,7 @@ userController.signupUser = async(req, res) => {
         const newOrganization = await new organizationModel({ name: req.body.organization });
         await newOrganization.save();
         await user.save();
-        res.header('x-access-token', token);
+        res.header('X-ACCESS_TOKEN', token);
         res.json({ auth: true, user: user, token: token });
     } catch (error) {
         res.json({ message: 'Error' });
