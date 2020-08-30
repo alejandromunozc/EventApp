@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 
 function authVerifyToken(req, res, next) {
     const token = req.headers['x-requested-with'];
+    console.log(req.headers);
+    console.log(token);
     if (!token) {
         return res.json({ message: 'Invalid token' });
     }
