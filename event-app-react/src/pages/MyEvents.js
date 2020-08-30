@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import Cookies from "universal-cookie";
+import axios from "axios";
 
 import "./styles/myevents.css";
 
@@ -11,13 +13,45 @@ import Footer from "../components/Footer";
 
 import iconLogo from "../img/icon.png";
 
+const BASE_URL = "http://eventapp.koalab.tech/api/users";
+const cookies = new Cookies();
+const ID_USER = cookies.get("_id");
+// const TOKEN = cookies.get("Token");
+
 class MyEvents extends React.Component {
+  requestGet = async () => {
+    await axios({
+      method: "get",
+      url: `${BASE_URL}/${ID_USER}`,
+    })
+      .then((response) => {
+        console.log(response.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  logOut = () => {
+    cookies.remove("id", { path: "/" });
+    cookies.remove("Token", { path: "/" });
+    cookies.remove("E-mail", { path: "/" });
+    window.location.href = "./";
+  };
+
+  componentDidMount() {
+    this.requestGet();
+  }
+
   render() {
     return (
       <Fragment>
         <HeaderLogo />
         <UserReg />
         <section className="myEvents">
+          <button className="button" onClick={() => this.logOut()}>
+            Log out
+          </button>
           <div className="container">
             <div className="myEvents__content">
               <div className="myEvents__title">

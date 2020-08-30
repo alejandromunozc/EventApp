@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-// import Cookies from "universal-cookie";
+import Cookies from "universal-cookie";
 
 import "./styles/login.css";
 
@@ -11,7 +11,7 @@ import HeaderLogo from "../components/HeaderLogo";
 import Footer from "../components/Footer";
 
 const BASE_URL = "http://eventapp.koalab.tech/api/login";
-// const cookies = new Cookies();
+const cookies = new Cookies();
 
 class Login extends React.Component {
   state = {
@@ -32,8 +32,8 @@ class Login extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form was submitted!");
-    console.log(this.state);
+    // console.log("Form was submitted!");
+    // console.log(this.state);
   };
 
   login = async () => {
@@ -50,7 +50,20 @@ class Login extends React.Component {
       data: data,
     })
       .then((response) => {
-        console.log(response.data);
+        return response.data;
+      })
+      .then((response) => {
+        if (response.auth) {
+          // console.log(response);
+          var loginResponse = response.user;
+          cookies.set("_id", loginResponse._id, { path: "/myevents" });
+          cookies.set("email", loginResponse.email, { path: "/myevents" });
+          cookies.set("token", response.token, { path: "/myevents" });
+          alert(`Bienvenido ${loginResponse.name}`);
+          window.location.href = "./myevents";
+        } else {
+          alert("El usuario o la contraseña no son correctos");
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -99,13 +112,12 @@ class Login extends React.Component {
                     />
                     <br />
                   </div>
-                  <Link
-                    to="/myevents"
+                  <button
                     onClick={() => this.login()}
                     className="login__form--btn button"
                   >
                     Log in
-                  </Link>
+                  </button>
                 </form>
               </div>
               <div className="login__footer">

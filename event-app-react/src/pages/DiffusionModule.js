@@ -19,21 +19,25 @@ class DiffusionModule extends React.Component {
             </div>
             <table className="diffusion__list">
               <thead>
-                <th>Email</th>
-                <th>Status</th>
+                <tr>
+                  <td>Email</td>
+                  <td>Status</td>
+                </tr>
               </thead>
-              <thead>
-                <td>javandresmoreno@gmail.com</td>
-                <td>Attending</td>
-              </thead>
-              <thead>
-                <td>israel.castro@gmail.com</td>
-                <td>Attending</td>
-              </thead>
-              <thead>
-                <td>alejandromunozc@gmail.com</td>
-                <td>Attending</td>
-              </thead>
+              <tbody>
+                <tr>
+                  <td>javandresmoreno@gmail.com</td>
+                  <td>Attending</td>
+                </tr>
+                <tr>
+                  <td>israel.castro@gmail.com</td>
+                  <td>Attending</td>
+                </tr>
+                <tr>
+                  <td>alejandromunozc@gmail.com</td>
+                  <td>Attending</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
