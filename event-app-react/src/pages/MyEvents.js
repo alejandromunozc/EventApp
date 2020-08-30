@@ -6,51 +6,134 @@ import axios from "axios";
 import "./styles/myevents.css";
 
 import HeaderLogo from "../components/HeaderLogo";
-import UserReg from "../components/UserReg";
 import EventList from "../components/EventList";
 import DiffusionModule from "./DiffusionModule";
 import Footer from "../components/Footer";
+import Modal from "../components/Modal";
 
 import iconLogo from "../img/icon.png";
 
 const BASE_URL = "http://eventapp.koalab.tech/api/users";
 const cookies = new Cookies();
 const ID_USER = cookies.get("_id");
-const TOKEN = cookies.get("Token");
+const TOKEN = cookies.get("token");
 
 class MyEvents extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        user: {
+          _id: "",
+          name: "",
+          email: "",
+        },
+      },
+      modalIsOpen: false,
+      form: {
+        emailCollaborator: "",
+      },
+    };
+  }
+
+  /*---------------------GET REQUEST ----------------------*/
+
   requestGet = async () => {
     await axios({
       method: "get",
       url: `${BASE_URL}/${ID_USER}`,
       headers: {
-        "x-access-token": toString(TOKEN),
+        accept: TOKEN,
       },
     })
       .then((response) => {
-        console.log(response.user);
+        this.setState({ data: response.data });
+        // console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
+  /*---------------------POST REQUEST ----------------------*/
+
+  requestPost = async () => {
+    // await axios
+    //   .post(`${BASE_URL}/${ID_USER}`, this.state.form)
+    await axios({
+      method: "post",
+      url: `${BASE_URL}/${ID_USER}`,
+      headers: {
+        // "Content-Type": "application/json",
+        accept: TOKEN,
+      },
+      data: this.state.form,
+    })
+      .then((response) => {
+        this.modalIsOpen();
+        this.requestGet();
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  /*--------------------- USER LOGOUT ----------------------*/
   logOut = () => {
-    cookies.remove("id", { path: "/" });
-    cookies.remove("Token", { path: "/" });
-    cookies.remove("E-mail", { path: "/" });
+    cookies.remove("_id", { path: "/" });
+    cookies.remove("token", { path: "/" });
+    cookies.remove("email", { path: "/" });
     window.location.href = "./";
   };
 
+  /*---------------------LIFE CYCLE  ----------------------*/
   componentDidMount() {
+    if (!cookies.get("_id")) {
+      window.location.href = "./";
+    }
+
     this.requestGet();
   }
 
+  /*--------------------- MODAL STATES ----------------------*/
+  handleOpenModal = (e) => {
+    this.setState({ modalIsOpen: true });
+  };
+
+  handleCloseModal = (e) => {
+    this.setState({ modalIsOpen: false });
+  };
+
+  /*--------------------- USER CAPTURE ----------------------*/
+
+  handleChange = async (e) => {
+    e.persist();
+    await this.setState({
+      form: {
+        ...this.state.form,
+        [e.target.name]: e.target.value,
+      },
+    });
+    console.log(this.state.form);
+  };
+
   render() {
+    const { form } = this.state;
+
     return (
       <Fragment>
         <HeaderLogo />
-        <UserReg />
+        <div className="header__user">
+          <h2 className="header__user--name" href="/">
+            {this.state.data.user.name}
+          </h2>
+          <span className="header__user--icon">
+            <img
+              src="https://img.icons8.com/bubbles/100/000000/admin-settings-male.png"
+              alt="user"
+            />
+          </span>
+        </div>
         <section className="myEvents">
           <button className="button" onClick={() => this.logOut()}>
             Log out
@@ -59,7 +142,7 @@ class MyEvents extends React.Component {
             <div className="myEvents__content">
               <div className="myEvents__title">
                 <img src={iconLogo} alt="app icon" />
-                <h3>My events</h3>
+                <h3>My Events</h3>
               </div>
               <div className="myEvents__cta">
                 <Link to="/event-module" className="button myEvents__button">
@@ -84,22 +167,42 @@ class MyEvents extends React.Component {
               <div className="collaborators__list">
                 <div className="collaborators__emails">
                   <div className="collaborators__emails--item">
-                    javandresmoreno@gmail.com
-                    <button className="emails__item--delete">&#10006;</button>
-                  </div>
-                  <div className="collaborators__emails--item">
-                    israel.castro@gmail.com
-                    <button className="emails__item--delete">&#10006;</button>
-                  </div>
-                  <div className="collaborators__emails--item">
-                    alejandromunozc@gmail.com
+                    {this.state.form.emailCollaborator}
                     <button className="emails__item--delete">&#10006;</button>
                   </div>
                 </div>
                 <div className="collaborators__addnew">
-                  <button className="collaborators__button button">
+                  <button
+                    className="collaborators__button button"
+                    onClick={this.handleOpenModal}
+                  >
                     Add new collaborator
                   </button>
+                  <Modal
+                    isOpen={this.state.modalIsOpen}
+                    onClose={this.handleCloseModal}
+                  >
+                    <div className="modal__content">
+                      <h3>Add new collaborator</h3>
+                      <form>
+                        <label htmlFor="emailCollaborator">
+                          E-mail Address
+                        </label>
+                        <br />
+                        <input
+                          type="email"
+                          name="emailCollaborator"
+                          id="emailCollaborator"
+                          onChange={this.handleChange}
+                          value={form.email}
+                        />
+
+                        <button className="button" onClick={this.requestPost}>
+                          Submit
+                        </button>
+                      </form>
+                    </div>
+                  </Modal>
                 </div>
               </div>
             </div>

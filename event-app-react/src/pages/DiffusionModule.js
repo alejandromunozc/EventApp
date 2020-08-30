@@ -20,8 +20,8 @@ class DiffusionModule extends React.Component {
             <table className="diffusion__list">
               <thead>
                 <tr>
-                  <td>Email</td>
-                  <td>Status</td>
+                  <th>Email</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>

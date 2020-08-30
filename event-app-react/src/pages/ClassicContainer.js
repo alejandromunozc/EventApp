@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 
 import HeaderLogo from "../components/HeaderLogo";
-import UserReg from "../components/UserReg";
 import ClassicHero from "../components/ClassicHero";
 import Countdown from "../components/Countdown";
 import ClassicSummary from "../components/ClassicSummary";
@@ -50,7 +49,6 @@ class ClassicContainer extends React.Component {
     return (
       <React.Fragment>
         <HeaderLogo />
-        <UserReg />
         <ClassicHero
           onCloseModal={this.handleCloseModal}
           onOpenModal={this.handleOpenModal}

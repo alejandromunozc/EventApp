@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Cookies from "universal-cookie";
 
 import "./styles/login.css";
 
@@ -11,6 +12,7 @@ import HeaderLogo from "../components/HeaderLogo";
 import Footer from "../components/Footer";
 
 const BASE_URL = "http://eventapp.koalab.tech/api/signup";
+const cookies = new Cookies();
 
 class SignupAdmin extends React.Component {
   state = {
@@ -50,15 +52,21 @@ class SignupAdmin extends React.Component {
       },
       data: data,
     })
-      // .post(BASE_URL, {
-      //   params: {
-      //     email: this.state.form.email,
-      //     password: this.state.form.password,
-      //     headers: { "Content-Type": "application/json" },
-      //   },
-      // })
       .then((response) => {
-        console.log(response.data);
+        return response.data;
+        // console.log(response.data);
+      })
+      .then((response) => {
+        var signupResponse = response.user;
+        cookies.set("_id", signupResponse._id, { path: "/" });
+        cookies.set("email", signupResponse.email, { path: "/" });
+        cookies.set("name", signupResponse.name, { path: "/" });
+        cookies.set("organization", signupResponse.organization, { path: "/" });
+        cookies.set("role", signupResponse.role, { path: "/" });
+        cookies.set("img_url", signupResponse.img_url, { path: "/" });
+        cookies.set("token", response.token, { path: "/" });
+        alert(`Bienvenido ${signupResponse.name}`);
+        window.location.href = "../event-module";
       })
       .catch((error) => {
         console.log(error);

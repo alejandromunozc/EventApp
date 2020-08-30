@@ -70,6 +70,12 @@ class Login extends React.Component {
       });
   };
 
+  componentDidMount() {
+    if (cookies.get("_id")) {
+      window.location.href = "./myevents";
+    }
+  }
+
   render() {
     return (
       <Fragment>

@@ -5,13 +5,11 @@ import "./styles/templates.css";
 
 import HeaderLogo from "../components/HeaderLogo";
 import Footer from "../components/Footer";
-import UserReg from "../components/UserReg";
 
 function Templates() {
   return (
     <Fragment>
       <HeaderLogo />
-      <UserReg />
       <section className="chooseTemplate">
         <div className="container">
           <div className="chooseTemplate__content">
