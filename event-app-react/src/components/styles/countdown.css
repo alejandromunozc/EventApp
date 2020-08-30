@@ -1,0 +1,31 @@
+.countdown {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  position: relative;
+}
+
+.countdown__content {
+  background-color: var(--cta);
+  color: var(--secondary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10%;
+}
+
+.countdown__title {
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.countdown__grid--title {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.countdown__grid--time {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 3em;
+}
