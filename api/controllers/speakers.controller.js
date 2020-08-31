@@ -6,12 +6,10 @@ const eventModel = require('../lib/models/event')
 speakerController.getSpeakers = async(req, res) => {
 
     try {
-        const eventSpeakers = await eventModel.findOne({ _id: req.body.idEvent });
-        console.log(eventSpeakers.speakers);
-        const speakers = await SpeackerModel.find(eventSpeakers.speakers.forEach(element => {
-            console.log(element);
-        }));
-        console.log(speakers);
+        //const eventSpeakers = await eventModel.findOne({ _id: req.body.idEvent });
+
+        const speakers = await SpeackerModel.find();
+        res.json({ speakers })
 
     } catch (error) {
         res.json({ message: error });
