@@ -72,7 +72,7 @@ class Templates extends React.Component {
                     />
                     <button
                       onClick={() => this.requestPut()}
-                      className="button"
+                      className="button createEvent__form--button"
                       name="classic"
                     >
                       I like it!
@@ -88,7 +88,7 @@ class Templates extends React.Component {
                     />
                     <button
                       onClick={() => this.requestPut()}
-                      className="button"
+                      className="createEvent__form--button button"
                       name="minimalist"
                     >
                       I like it!

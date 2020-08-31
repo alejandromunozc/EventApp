@@ -18,6 +18,7 @@ const cookies = new Cookies();
 const ID_USER = cookies.get("_id");
 const TOKEN = cookies.get("token");
 const ORGANIZATION = cookies.get("organization");
+const SIGNUP_NAME = cookies.get("name");
 // const ID_EVENT = cookies.get("id_event");
 
 class MyEvents extends React.Component {
@@ -134,7 +135,7 @@ class MyEvents extends React.Component {
         <HeaderLogo />
         <div className="header__user">
           <h2 className="header__user--name" href="/">
-            {this.state.data.user.name}
+            {SIGNUP_NAME}
           </h2>
           <span className="header__user--icon">
             <img
@@ -142,11 +143,14 @@ class MyEvents extends React.Component {
               alt="user"
             />
           </span>
-        </div>
-        <section className="myEvents">
-          <button className="button" onClick={() => this.logOut()}>
+          <button
+            className="myEvents__button logout__button button"
+            onClick={() => this.logOut()}
+          >
             Log out
           </button>
+        </div>
+        <section className="myEvents">
           <div className="container">
             <div className="myEvents__content">
               <div className="myEvents__title">
@@ -165,7 +169,7 @@ class MyEvents extends React.Component {
           <div className="container">
             <div className="organization__content">
               <div className="organization__title">Organization</div>
-              <div className="organization__company">Code Warriors</div>
+              <div className="organization__company">{ORGANIZATION}</div>
             </div>
           </div>
         </section>

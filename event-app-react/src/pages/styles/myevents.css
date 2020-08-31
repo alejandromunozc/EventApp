@@ -43,6 +43,10 @@
   width: 200px;
 }
 
+.logout__button {
+  margin: 1em 0 1em 0;
+}
+
 .organization__content {
   display: flex;
   justify-content: space-between;

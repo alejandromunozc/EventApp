@@ -71,6 +71,17 @@ class EventModule extends React.Component {
       .then((response) => {
         var eventCreationResponse = response.event_url;
         cookies.set("id_event", eventCreationResponse._id, { path: "/" });
+        cookies.set("name_event", eventCreationResponse.name, { path: "/" });
+        cookies.set("event_url", eventCreationResponse.event_url, {
+          path: "/",
+        });
+        cookies.set("location", eventCreationResponse.location, { path: "/" });
+        cookies.set("country", eventCreationResponse.country, { path: "/" });
+        cookies.set("city", eventCreationResponse.city, { path: "/" });
+        cookies.set("date", eventCreationResponse.date, { path: "/" });
+        cookies.set("start_hour", eventCreationResponse.start_hour, {
+          path: "/",
+        });
         // console.log(eventCreationResponse._id);
         window.location.href = "./templates";
       })
@@ -87,13 +98,13 @@ class EventModule extends React.Component {
           <h2 className="header__user--name" href="/">
             {`Hi, Welcome! ${USER_ADMIN}`}
           </h2>
-          <p>{ORGANIZATION}</p>
           <span className="header__user--icon">
             <img
               src="https://img.icons8.com/bubbles/100/000000/admin-settings-male.png"
               alt="user"
             />
           </span>
+          <h3>{ORGANIZATION}</h3>
         </div>
         <section className="createEvent">
           <div className="container">

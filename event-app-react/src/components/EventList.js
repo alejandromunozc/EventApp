@@ -1,5 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
+const nameEvent = cookies.get("name_event");
+const country = cookies.get("country");
+const city = cookies.get("city");
+const date = cookies.get("date");
+const startHour = cookies.get("start_hour");
 
 function EventList() {
   return (
@@ -15,11 +23,11 @@ function EventList() {
                 src="https://raw.githubusercontent.com/alejandromunozc/EventApp/frontend/src/assets/img/template-classic.png"
                 alt="Classic"
               />
-              <div className="item__title">Code Warriors</div>
+              <div className="item__title">{nameEvent}</div>
               <div className="item__details">
-                <div className="item__details--date">August 28th, 2020</div>
-                <div className="item__details--hour">8:00 am</div>
-                <div className="item__details--location">Bogota, Colombia</div>
+                <div className="item__details--date">{date}</div>
+                <div className="item__details--hour">{startHour}</div>
+                <div className="item__details--location">{`${country}, ${city}`}</div>
               </div>
               <Link className="button" to="/classic">
                 Edit
