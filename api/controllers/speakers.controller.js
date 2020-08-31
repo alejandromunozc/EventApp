@@ -1,13 +1,20 @@
 const speakerController = {};
 
 const SpeackerModel = require('../lib/models/speaker');
+const eventModel = require('../lib/models/event')
 
 speakerController.getSpeakers = async(req, res) => {
+
     try {
-        const speakers = await SpeackerModel.find();
-        res.json({ speakers });
+        const eventSpeakers = await eventModel.findOne({ _id: req.body.idEvent });
+        console.log(eventSpeakers.speakers);
+        const speakers = await SpeackerModel.find(eventSpeakers.speakers.forEach(element => {
+            console.log(element);
+        }));
+        console.log(speakers);
+
     } catch (error) {
-        res.json({ message: 'Error' });
+        res.json({ message: error });
     }
 }
 
@@ -26,9 +33,13 @@ speakerController.createSpeaker = async(req, res) => {
     const newSpeaker = new SpeackerModel({ name, bio, role, twitter, img_url });
     try {
         await newSpeaker.save();
+        const eventSpeakers = await eventModel.findOne({ _id: req.body.idEvent });
+        const speaker = eventSpeakers.speakers;
+        speaker[speaker.length] = newSpeaker.id;
+        await eventModel.findByIdAndUpdate(req.body.idEvent, { $set: { speakers: speaker } });
         res.json({ speaker: newSpeaker });
     } catch (error) {
-        res.json({ message: error });
+        res.json({ message: 'Error' });
     }
 }
 

@@ -50,6 +50,9 @@ const eventSchema = new Schema({
     img_url: {
         type: String
     },
+    speakers: {
+        type: [String]
+    },
     partners: {
         type: [String]
     },
