@@ -17,6 +17,8 @@ const BASE_URL = "http://eventapp.koalab.tech/api/users";
 const cookies = new Cookies();
 const ID_USER = cookies.get("_id");
 const TOKEN = cookies.get("token");
+const ORGANIZATION = cookies.get("organization");
+// const ID_EVENT = cookies.get("id_event");
 
 class MyEvents extends React.Component {
   constructor(props) {
@@ -31,7 +33,9 @@ class MyEvents extends React.Component {
       },
       modalIsOpen: false,
       form: {
-        emailCollaborator: "",
+        email: "",
+        organization: ORGANIZATION,
+        role: "organizer",
       },
     };
   }
@@ -58,20 +62,24 @@ class MyEvents extends React.Component {
   /*---------------------POST REQUEST ----------------------*/
 
   requestPost = async () => {
-    // await axios
-    //   .post(`${BASE_URL}/${ID_USER}`, this.state.form)
+    const data = JSON.stringify({
+      email: this.state.form.email,
+      organization: ORGANIZATION,
+      role: "organizer",
+    });
     await axios({
       method: "post",
-      url: `${BASE_URL}/${ID_USER}`,
+      url: BASE_URL,
       headers: {
-        // "Content-Type": "application/json",
         accept: TOKEN,
+        "Content-Type": "application/json",
       },
-      data: this.state.form,
+      form: data,
     })
       .then((response) => {
         this.modalIsOpen();
-        this.requestGet();
+        this.requestPost();
+        console.log(response);
       })
       .catch((error) => {
         console.log(error.message);
@@ -93,6 +101,7 @@ class MyEvents extends React.Component {
     }
 
     this.requestGet();
+    this.requestPost();
   }
 
   /*--------------------- MODAL STATES ----------------------*/
@@ -114,7 +123,7 @@ class MyEvents extends React.Component {
         [e.target.name]: e.target.value,
       },
     });
-    console.log(this.state.form);
+    // console.log(this.state.form);
   };
 
   render() {
@@ -167,7 +176,7 @@ class MyEvents extends React.Component {
               <div className="collaborators__list">
                 <div className="collaborators__emails">
                   <div className="collaborators__emails--item">
-                    {this.state.form.emailCollaborator}
+                    {this.state.form.email}
                     <button className="emails__item--delete">&#10006;</button>
                   </div>
                 </div>
@@ -185,14 +194,12 @@ class MyEvents extends React.Component {
                     <div className="modal__content">
                       <h3>Add new collaborator</h3>
                       <form>
-                        <label htmlFor="emailCollaborator">
-                          E-mail Address
-                        </label>
+                        <label htmlFor="email">E-mail Address</label>
                         <br />
                         <input
                           type="email"
-                          name="emailCollaborator"
-                          id="emailCollaborator"
+                          name="email"
+                          id="email"
                           onChange={this.handleChange}
                           value={form.email}
                         />

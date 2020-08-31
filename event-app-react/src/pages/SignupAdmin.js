@@ -172,7 +172,6 @@ class SignupAdmin extends React.Component {
                     <br />
                   </div>
                   <button
-                    to="/event-module"
                     onClick={() => this.signup()}
                     className="login__form--btn button"
                   >

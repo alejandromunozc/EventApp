@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import Moment from "moment";
 
 import "./styles/eventmodule.css";
 
@@ -8,21 +9,22 @@ import HeaderLogo from "../components/HeaderLogo";
 import Footer from "../components/Footer";
 
 const cookies = new Cookies();
-const BASE_URL = "http://eventapp.koalab.tech/api/users";
-const ID_USER = cookies.get("_id");
+const BASE_URL = "http://eventapp.koalab.tech/api/events";
+// const ID_USER = cookies.get("_id");
 const TOKEN = cookies.get("token");
 const USER_ADMIN = cookies.get("name");
+const ORGANIZATION = cookies.get("organization");
 
 class EventModule extends React.Component {
   state = {
     form: {
-      eventTitle: "",
-      eventUrl: "",
+      name: "",
+      event_url: "",
       location: "",
       country: "",
       city: "",
       date: "",
-      startHour: "",
+      start_hour: "",
       // role: "admin",
     },
   };
@@ -38,33 +40,38 @@ class EventModule extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form was submitted!");
-    console.log(this.state);
+    // console.log("Form was submitted!");
+    // console.log(this.state);
   };
 
   eventCreation = async () => {
     const data = JSON.stringify({
-      eventTitle: this.state.form.eventTitle,
-      eventCreation: this.state.form.eventUrl,
+      name: this.state.form.name,
+      event_url: this.state.form.event_url,
       location: this.state.form.location,
       country: this.state.form.country,
       city: this.state.form.city,
-      date: this.state.form.date,
-      startHour: this.state.form.startHour,
+      date: Moment(this.state.form.date).toISOString(),
+      start_hour: this.state.form.start_hour,
+      organization: ORGANIZATION,
     });
     await axios({
       method: "post",
-      url: `${BASE_URL}/${ID_USER}`,
+      url: BASE_URL,
       headers: {
         accept: TOKEN,
+        "Content-Type": "application/json",
       },
       data: data,
     })
       .then((response) => {
-        // return response.data;
-        console.log(response.data);
+        return response.data;
+        // console.log(response.data.event_url._id);
       })
       .then((response) => {
+        var eventCreationResponse = response.event_url;
+        cookies.set("id_event", eventCreationResponse._id, { path: "/" });
+        // console.log(eventCreationResponse._id);
         window.location.href = "./templates";
       })
       .catch((error) => {
@@ -80,6 +87,7 @@ class EventModule extends React.Component {
           <h2 className="header__user--name" href="/">
             {`Hi, Welcome! ${USER_ADMIN}`}
           </h2>
+          <p>{ORGANIZATION}</p>
           <span className="header__user--icon">
             <img
               src="https://img.icons8.com/bubbles/100/000000/admin-settings-male.png"
@@ -102,18 +110,18 @@ class EventModule extends React.Component {
                   onSubmit={this.handleSubmit}
                 >
                   <div className="createEvent__field createEvent__field--title">
-                    <label htmlFor="eventTitle">Event Title</label>
+                    <label htmlFor="name">Event Title</label>
                     <br />
                     <input
                       onChange={this.handleChange}
                       className="createEvent__form--input"
                       type="text"
-                      name="eventTitle"
-                      value={this.state.eventTitle}
+                      name="name"
+                      value={this.state.name}
                     />
                   </div>
                   <div className="createEvent__field createEvent__field--url">
-                    <label htmlFor="eventUrl">
+                    <label htmlFor="event_url">
                       Specify like you want your domain
                     </label>
                     <br />
@@ -122,8 +130,8 @@ class EventModule extends React.Component {
                       className="createEvent__form--input"
                       placeholder="e.g. event.app/organization-name/event-name"
                       type="text"
-                      name="eventUrl"
-                      value={this.state.eventUrl}
+                      name="event_url"
+                      value={this.state.event_url}
                     />
                   </div>
                   <div className="createEvent__field createEvent__field--location">
@@ -172,14 +180,14 @@ class EventModule extends React.Component {
                     />
                   </div>
                   <div className="createEvent__field createEvent__field--middle">
-                    <label htmlFor="startHour">Start hour</label>
+                    <label htmlFor="start_hour">Start hour</label>
                     <br />
                     <input
                       onChange={this.handleChange}
                       className="createEvent__form--input"
                       type="time"
-                      name="startHour"
-                      value={this.state.startHour}
+                      name="start_hour"
+                      value={this.state.start_hour}
                     />
                   </div>
                   <button
