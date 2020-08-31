@@ -7,8 +7,9 @@ With EventApp you (and your organization) can create events and conferences for 
 ### 🔗 Links
 
 - Website: [http://eventapp.xyz/](http://eventapp.xyz/)
+- API: [http://eventapp.koalab.tech/api](http://eventapp.koalab.tech/api)
 - Documentation: [https://www.notion.so/EventApp-Documentation-b1b5525e802b497bb90a09c119512b30](https://www.notion.so/EventApp-Documentation-b1b5525e802b497bb90a09c119512b30)
-- Mockup: [https://xd.adobe.com/view/a76b853c-5ef6-4e07-966e-861be01a3edd-f238/](https://xd.adobe.com/view/a76b853c-5ef6-4e07-966e-861be01a3edd-f238/)
+- Mockup: [https://xd.adobe.com/view/2cb644e9-807c-4ab5-bf99-2db144f38b31-79e5/?fullscreen](https://xd.adobe.com/view/2cb644e9-807c-4ab5-bf99-2db144f38b31-79e5/?fullscreen)
 
 ## ⚙️ Execution
 
@@ -38,10 +39,11 @@ Production Environment:
 
 ## 💎 Technologies
 
-- React (components)
-- Amazon S3 (storage)
+- React (Components)
+- Amazon S3 (Storage)
 - Digital Ocean (deploy)
-- Nodejs (server)
+- Nodejs (Server)
+- ExpressJs (Server)
 - MongoDB (Database)
 - JWT (Authentications)
 
