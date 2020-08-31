@@ -41,6 +41,12 @@ body {
   font-family: var(--font-family);
 }
 
+button,
+input {
+  outline: none;
+  cursor: pointer;
+}
+
 .container {
   display: inherit;
   margin: 0 auto;
@@ -763,7 +769,7 @@ li.header__nav--item a {
 }
 
 /* Modals */
-.modal__addCollaborator {
+.modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -775,15 +781,16 @@ li.header__nav--item a {
   background-color: rgba(82, 41, 122, 0.5);
 }
 
-.modal__addCollaborator--content {
+.modal__content {
   background-color: #fcfaff;
   margin: 15% auto;
   padding: calc(var(--space) * 5);
   border-radius: 1em;
   width: 640px;
+  position: relative;
 }
 
-.modal__addCollaborator--content h3 {
+.modal__content h3 {
   font-size: var(--featured-text);
   color: var(--purple);
   font-weight: 400;
@@ -793,12 +800,12 @@ li.header__nav--item a {
   padding-bottom: calc(var(--space) * 2);
 }
 
-.modal__addCollaborator--content label {
+.modal__content label {
   color: var(--purple);
   font-size: var(--small-text);
 }
 
-.modal__addCollaborator--content input {
+.modal__content input {
   width: 100%;
   border-radius: 7px;
   border: 1px solid #c1c7ff;
@@ -807,7 +814,7 @@ li.header__nav--item a {
   outline: none;
 }
 
-.modal__addCollaborator--content button {
+.modal__content button {
   background-color: var(--yellow);
   color: var(--purple);
   border: 0px;
@@ -822,9 +829,12 @@ li.header__nav--item a {
 
 .close {
   color: var(--orange-secondary);
-  float: right;
+  position: absolute;
   font-size: 28px;
   font-weight: bold;
+  right: calc(var(--space) * 2);
+  top: calc(var(--space) * 2);
+  line-height: 0.5;
 }
 
 .close:hover,
@@ -936,5 +946,10 @@ li.header__nav--item a {
   .footer-content {
     flex-direction: column;
     padding: calc(var(--space) * 2) 0;
+  }
+
+  .modal__content {
+    width: 100%;
+    padding: calc(var(--space) * 3);
   }
 }
