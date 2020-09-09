@@ -1,10 +1,12 @@
 const partnerController = {};
 
 const partnerModel = require('../lib/models/partner');
+const eventModel = require('../lib/models/event')
 
 partnerController.getPartners = async(req, res) => {
     try {
-        const partners = await partnerModel.find();
+        const eventPartners = await eventModel.findOne({ _id: req.body.idEvent });
+        const partners = await partnerModel.find({ _id: { $in: eventPartners.partners } });
         res.json({ partners });
     } catch (error) {
         res.json({ message: 'Error' });
@@ -26,6 +28,10 @@ partnerController.createPartner = async(req, res) => {
     const newPartner = new partnerModel({ name, url, img_url });
     try {
         await newPartner.save();
+        const eventPartners = await eventModel.findOne({ _id: req.body.idEvent });
+        const partner = eventPartners.partners;
+        partner[partner.length] = newPartner.id;
+        await eventModel.findByIdAndUpdate(req.body.idEvent, { $set: { partners: partner } });
         res.json({ partner: newPartner });
     } catch (error) {
         res.json({ message: 'Error' });

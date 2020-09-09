@@ -6,13 +6,12 @@ const eventModel = require('../lib/models/event')
 speakerController.getSpeakers = async(req, res) => {
 
     try {
-        //const eventSpeakers = await eventModel.findOne({ _id: req.body.idEvent });
-
-        const speakers = await SpeackerModel.find();
+        const eventSpeakers = await eventModel.findOne({ _id: req.body.idEvent });
+        const speakers = await SpeackerModel.find({ _id: { $in: eventSpeakers.speakers } });
         res.json({ speakers })
 
     } catch (error) {
-        res.json({ message: error });
+        res.json({ message: 'Error' });
     }
 }
 
