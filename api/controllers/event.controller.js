@@ -46,7 +46,7 @@ eventController.createEvent = async(req, res) => {
     });
     try {
         await newEvent.save();
-        res.json({ event_url: newEvent });
+        res.json({ event: newEvent });
     } catch (error) {
         res.json({ message: error });
     }
