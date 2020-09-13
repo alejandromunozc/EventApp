@@ -11,7 +11,13 @@ function Footer() {
         <div className="footer-content">
           <img className="footer__logo" src={teamLogo} alt="Code Warriors" />
           <div className="footer__description">
-            <span>Made with Love from Platzi Master | 2020</span>
+            <span>
+              Made with{" "}
+              <span role="img" aria-label="green-heart">
+                💚
+              </span>{" "}
+              from Platzi Master | 2020
+            </span>
           </div>
         </div>
       </div>
