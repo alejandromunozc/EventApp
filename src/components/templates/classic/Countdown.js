@@ -4,22 +4,28 @@ import "../../../assets/styles/components/templates/countdown.css";
 
 const Countdown = () => {
   return (
-    <section className="countdown">
-      <div className="countdown__content">
-        <h2 className="countdown__title">¡Days to go the event!</h2>
+    <section className="classic__countdown">
+      <div className="countdown__title">
+        <div className="countdown__title--left">¡Days to go the event!</div>
       </div>
-      <div className="countdown__grid">
-        <div className="countdown__grid--title">
-          <h2>Days</h2>
-          <h2>Hours</h2>
-          <h2>Minutes</h2>
-          <h2>Seconds</h2>
-        </div>
-        <div className="countdown__grid--time">
-          <h1>01</h1>
-          <h1>23</h1>
-          <h1>45</h1>
-          <h1>55</h1>
+      <div className="countdown__counter">
+        <div className="countdown__counter--right">
+          <div className="countdown__counter--days">
+            <div className="days__text">Days</div>
+            <div className="days__number">6</div>
+          </div>
+          <div className="countdown__counter--hours">
+            <div className="hours__text">Hours</div>
+            <div className="hours__number">1</div>
+          </div>
+          <div className="countdown__counter--minutes">
+            <div className="minutes__text">Minutes</div>
+            <div className="minutes__number">47</div>
+          </div>
+          <div className="countdown__counter--seconds">
+            <div className="seconds__text">Seconds</div>
+            <div className="seconds__number">20</div>
+          </div>
         </div>
       </div>
     </section>

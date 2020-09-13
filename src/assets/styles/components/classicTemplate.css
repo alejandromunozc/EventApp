@@ -145,7 +145,7 @@ body {
 }
 
 .classic__summary {
-  padding: 6% 0;
+  padding: 6%;
   background-color: var(--bg);
 }
 
@@ -167,7 +167,7 @@ body {
 }
 
 .classic__speakers {
-  padding: 6% 0;
+  padding: 6%;
   background-color: var(--secondary);
 }
 
@@ -233,7 +233,7 @@ body {
 }
 
 .classic__partners {
-  padding: 6% 0;
+  padding: 6%;
 }
 
 .classic__partners--title {
@@ -366,6 +366,7 @@ body {
   .classic__hero--info {
     margin-bottom: 2em;
   }
+
   .classic__summary--container {
     display: block;
     padding: 1em;

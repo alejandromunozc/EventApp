@@ -2,7 +2,7 @@ import React from "react";
 
 const Schedule = () => {
   return (
-    <section id="schedule" className="schedule">
+    <section id="schedule" className="classic__schedule">
       <div className="classic__container">
         <h2 className="classic__schedule--title">Schedule</h2>
         <div className="classic__schedule--list">

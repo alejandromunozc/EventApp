@@ -1,31 +1,72 @@
-.countdown {
+.classic__countdown {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: repeat(2, 1fr);
   position: relative;
+  height: 300px;
 }
 
-.countdown__content {
+.countdown__title {
   background-color: var(--cta);
   color: var(--secondary);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 10%;
-}
-
-.countdown__title {
   font-size: 2em;
   font-weight: 500;
 }
 
-.countdown__grid--title {
-  display: flex;
-  justify-content: space-evenly;
+.countdown__title--left {
+  width: 520px;
+  align-self: flex-end;
 }
 
-.countdown__grid--time {
+.countdown__counter {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  font-size: 3em;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.countdown__counter--right {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  width: 520px;
+}
+
+.days__number,
+.hours__number,
+.minutes__number,
+.seconds__number {
+  font-size: 64px;
+  font-weight: 600;
+}
+
+.days__text,
+.hours__text,
+.minutes__text,
+.seconds__text {
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  .countdown__title--left,
+  .countdown__counter--right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  .classic__countdown {
+    grid-template-columns: auto;
+    text-align: center;
+  }
+
+  .countdown__title--left,
+  .countdown__counter--right {
+    width: 100%;
+    padding: 6%;
+  }
 }
