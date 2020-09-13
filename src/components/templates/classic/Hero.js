@@ -19,6 +19,17 @@ function ClassicHero(props) {
                   src={classicLogoConf}
                   alt="Conference Logo"
                 />
+                <button
+                  className="classic__edit-button button"
+                  onClick={props.onOpenModal}
+                >
+                  Change Logo
+                </button>
+                <Modal isOpen={props.modalIsOpen} onClose={props.onCloseModal}>
+                  <div className="modal__content">
+                    <h3>Hola</h3>
+                  </div>
+                </Modal>
                 <h1 className="classic__hero--title">Event App Draft</h1>
                 <div className="classic__hero--details-location">
                   <div className="classic__location--icon">
