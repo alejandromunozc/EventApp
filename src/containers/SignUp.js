@@ -38,7 +38,7 @@ const Signup = () => {
                   alt="organizer img"
                 />
                 <p>
-                  Are your <strong>part of the organization</strong> of the
+                  Are you <strong>part of the organization</strong> of the
                   event?
                 </p>
               </Link>

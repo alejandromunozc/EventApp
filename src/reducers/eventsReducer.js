@@ -1,13 +1,7 @@
+const USER_EVENTS = JSON.parse(localStorage.getItem("event_url"));
+
 const INITIAL_STATE = {
-  form: {
-    name: "",
-    event_url: "",
-    location: "",
-    country: "",
-    city: "",
-    date: "",
-    start_hour: "",
-  },
+  form: USER_EVENTS || {},
 };
 
 export default (state = INITIAL_STATE, action) => {

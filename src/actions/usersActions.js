@@ -1,6 +1,9 @@
 import axios from "axios";
+import Cookies from "universal-cookie";
 
-export const signUpRequest = (user) => async (dispatch) => {
+const cookies = new Cookies();
+
+export const signUpRequest = (user) => (dispatch) => {
   const BASE_URL = "http://eventapp.koalab.tech/api/signup/";
 
   const data = JSON.stringify({
@@ -11,7 +14,7 @@ export const signUpRequest = (user) => async (dispatch) => {
     img_url: user.img_url,
     organization: user.organization,
   });
-  await axios({
+  axios({
     method: "post",
     url: BASE_URL,
     headers: {
@@ -22,22 +25,32 @@ export const signUpRequest = (user) => async (dispatch) => {
     .then((response) => {
       return response.data;
     })
+    .then((response) => {
+      const signupResponse = response.user;
+
+      cookies.set("token", response.token, { path: "/" });
+      console.log(signupResponse);
+      dispatch({
+        type: "SIGNUP_USERS",
+        payload: signupResponse,
+      });
+
+      localStorage.setItem("user", JSON.stringify(signupResponse));
+      window.location.href = "../event-module";
+    })
     .catch((error) => {
       console.log(error);
     });
-  dispatch({
-    type: "SIGNUP_USERS",
-  });
 };
 
-export const loginRequest = (user) => async (dispatch) => {
+export const loginRequest = (user) => (dispatch) => {
   const BASE_URL = "http://eventapp.koalab.tech/api/login/";
 
   const data = JSON.stringify({
     email: user.email,
     password: user.password,
   });
-  await axios({
+  axios({
     method: "post",
     url: BASE_URL,
     headers: {
@@ -46,18 +59,23 @@ export const loginRequest = (user) => async (dispatch) => {
     data: data,
   })
     .then((response) => {
-      // console.log(response.data.user);
-      if (response.data.auth) {
-        alert(`Welcome ${response.data.user.name}`);
-        window.location.href = "/myevents";
+      return response.data;
+    })
+    .then((response) => {
+      if (response.auth) {
+        const loginResponse = response.user;
+        cookies.set("token", response.token, { path: "/" });
+
+        alert(`Welcome, ${loginResponse.name}`);
+        dispatch({
+          type: "LOGIN_REQUEST",
+          payload: loginResponse,
+        });
+        localStorage.setItem("user", JSON.stringify(loginResponse));
+        window.location.href = "./myevents";
+        console.log(loginResponse);
       } else {
         alert("Email or password is wrong!");
       }
-    })
-    .catch((error) => {
-      console.log(error);
     });
-  dispatch({
-    type: "LOGIN_REQUEST",
-  });
 };

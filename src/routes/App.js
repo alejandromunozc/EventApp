@@ -9,6 +9,7 @@ import Login from "../containers/Login";
 import MyEvents from "../containers/MyEvents";
 import EventModule from "../containers/EventModule";
 import Templates from "../containers/Templates";
+import ClassicContainer from "../containers/ClassicTemplate";
 
 const App = () => (
   <BrowserRouter>
@@ -21,6 +22,7 @@ const App = () => (
         <Route exact path="/event-module" component={EventModule} />
         <Route exact path="/templates" component={Templates} />
         <Route exact path="/myevents" component={MyEvents} />
+        <Route exact path="/classic" component={ClassicContainer} />
       </Switch>
     </Layout>
   </BrowserRouter>

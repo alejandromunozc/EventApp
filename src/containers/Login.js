@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginRequest } from "../actions/usersActions";
@@ -7,7 +7,6 @@ import "../assets/styles/components/Login.css";
 import logoApp from "../assets/static/logo.png";
 
 import HeaderLogo from "../components/HeaderLogo";
-import Footer from "../components/Footer";
 
 const Login = (props) => {
   const [form, setValues] = useState({
@@ -26,6 +25,12 @@ const Login = (props) => {
     e.preventDefault();
     props.loginRequest(form);
   };
+
+  useEffect(() => {
+    if (props.usersReducer && props.usersReducer.user) {
+      props.history.push("./myevents");
+    }
+  }, [props.history, props.usersReducer]);
 
   return (
     <>
@@ -73,7 +78,6 @@ const Login = (props) => {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 };

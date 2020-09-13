@@ -3,13 +3,15 @@ import { connect } from "react-redux";
 
 import { eventCreation } from "../actions/eventsActions";
 import { signUpRequest } from "../actions/usersActions";
-// import Moment from "moment";
 
 import "../assets/styles/components/Eventmodule.css";
 
 import HeaderLogo from "../components/HeaderLogo";
 
 const EventModule = (props) => {
+  const userName = props.usersReducer.user.name;
+  const organization = props.usersReducer.user.organization;
+
   const [form, setValues] = useState({
     name: "",
     event_url: "",
@@ -18,6 +20,7 @@ const EventModule = (props) => {
     city: "",
     date: "",
     start_hour: "",
+    organization: organization,
   });
 
   const handleInput = (e) => {
@@ -31,7 +34,7 @@ const EventModule = (props) => {
     e.preventDefault();
     // console.log(form);
     props.eventCreation(form);
-    props.history.push("/templates");
+    // props.history.push("/templates");
   };
 
   return (
@@ -39,15 +42,16 @@ const EventModule = (props) => {
       <HeaderLogo />
       <div className="header__user">
         <h2 className="header__user--name" href="/">
-          user name
+          {userName}
         </h2>
+
         <span className="header__user--icon">
           <img
             src="https://img.icons8.com/bubbles/100/000000/admin-settings-male.png"
             alt="user"
           />
         </span>
-        <h3>{props.organization}</h3>
+        <h3>{organization}</h3>
       </div>
       <section className="createEvent">
         <div className="container">
@@ -75,15 +79,19 @@ const EventModule = (props) => {
                 </div>
                 <div className="createEvent__field createEvent__field--url">
                   <label htmlFor="event_url">
-                    Specify like you want your domain
+                    Specify like you want your domain <br />
+                    <small>
+                      e.g. event.app/organization-name/<b>event-name</b>{" "}
+                    </small>
                   </label>
                   <br />
                   <input
                     onChange={handleInput}
                     className="createEvent__form--input"
-                    placeholder="e.g. event.app/organization-name/event-name"
+                    placeholder="event.app/organization-name/event-name"
                     type="text"
                     name="event_url"
+                    // value={`event.app/${userOrganization.toLowerCase()}/`}
                   />
                 </div>
                 <div className="createEvent__field createEvent__field--location">
@@ -149,11 +157,16 @@ const EventModule = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+// const mapStateToProps = (usersReducer) => {
+//   return {
+//     user: usersReducer.user,
+//   };
+// };
+
+const mapStateToProps = ({ usersReducer, eventsReducer }) => {
   return {
-    user: {
-      organization: state.organization,
-    },
+    usersReducer,
+    eventsReducer,
   };
 };
 

@@ -1,130 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { loginRequest, signUpRequest } from "../actions/usersActions";
+import { eventCreation } from "../actions/eventsActions";
 
 import "../assets/styles/components/MyEvents.css";
 
 import HeaderLogo from "../components/HeaderLogo";
+import EventList from "../components/EventList";
+import DiffusionModule from "../components/DiffusionModule";
 
 // import Modal from "../components/Modal";
-// import EventList from "../components/EventList";
-// import DiffusionModule from "./DiffusionModule";
 
 import iconLogo from "../assets/static/icon.png";
 
-const MyEvents = () => {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     data: {
-  //       user: {
-  //         _id: "",
-  //         name: "",
-  //         email: "",
-  //       },
-  //     },
-  //     modalIsOpen: false,
-  //     form: {
-  //       email: "",
-  //       organization: ORGANIZATION,
-  //       role: "organizer",
-  //     },
-  //   };
-  // }
+/*----------------------------------------------------------------*/
 
-  // /*---------------------GET REQUEST ----------------------*/
+const MyEvents = (props) => {
+  console.log(props);
 
-  // requestGet = async () => {
-  //   await axios({
-  //     method: "get",
-  //     url: `${BASE_URL}/${ID_USER}`,
-  //     headers: {
-  //       accept: TOKEN,
-  //     },
-  //   })
-  //     .then((response) => {
-  //       this.setState({ data: response.data });
-  //       // console.log(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+  const userName = props.usersReducer.user.name;
 
-  // /*---------------------POST REQUEST ----------------------*/
+  const organization = props.usersReducer.user.organization;
 
-  // requestPost = async () => {
-  //   const data = JSON.stringify({
-  //     email: this.state.form.email,
-  //     organization: ORGANIZATION,
-  //     role: "organizer",
-  //   });
-  //   await axios({
-  //     method: "post",
-  //     url: BASE_URL,
-  //     headers: {
-  //       accept: TOKEN,
-  //       "Content-Type": "application/json",
-  //     },
-  //     form: data,
-  //   })
-  //     .then((response) => {
-  //       this.modalIsOpen();
-  //       this.requestPost();
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.message);
-  //     });
-  // };
+  const logOut = () => {
+    localStorage.clear();
+    props.history.push("./");
+  };
 
-  // /*--------------------- USER LOGOUT ----------------------*/
-  // logOut = () => {
-  //   cookies.remove("_id", { path: "/" });
-  //   cookies.remove("token", { path: "/" });
-  //   cookies.remove("email", { path: "/" });
-  //   window.location.href = "./";
-  // };
-
-  // /*---------------------LIFE CYCLE  ----------------------*/
-  // componentDidMount() {
-  //   if (!cookies.get("_id")) {
-  //     window.location.href = "./";
-  //   }
-
-  //   this.requestGet();
-  //   this.requestPost();
-  // }
-
-  // /*--------------------- MODAL STATES ----------------------*/
-  // handleOpenModal = (e) => {
-  //   this.setState({ modalIsOpen: true });
-  // };
-
-  // handleCloseModal = (e) => {
-  //   this.setState({ modalIsOpen: false });
-  // };
-
-  // /*--------------------- USER CAPTURE ----------------------*/
-
-  // handleChange = async (e) => {
-  //   e.persist();
-  //   await this.setState({
-  //     form: {
-  //       ...this.state.form,
-  //       [e.target.name]: e.target.value,
-  //     },
-  //   });
-  //   // console.log(this.state.form);
-  // };
-
-  // const { form } = this.state;
+  // useEffect(() => [props.usersReducer, props.eventsReducer]);
 
   return (
     <>
       <HeaderLogo />
       <div className="header__user">
         <h2 className="header__user--name" href="/">
-          name
+          {userName}
         </h2>
         <span className="header__user--icon">
           <img
@@ -132,7 +43,10 @@ const MyEvents = () => {
             alt="user"
           />
         </span>
-        <button className="myEvents__button logout__button button">
+        <button
+          className="myEvents__button logout__button button"
+          onClick={logOut}
+        >
           Log out
         </button>
       </div>
@@ -155,7 +69,7 @@ const MyEvents = () => {
         <div className="container">
           <div className="organization__content">
             <div className="organization__title">Organization</div>
-            <div className="organization__company">organization</div>
+            <div className="organization__company"> {organization} </div>
           </div>
         </div>
       </section>
@@ -204,8 +118,23 @@ const MyEvents = () => {
           </div>
         </div>
       </section>
+      <EventList />
+      <DiffusionModule />
     </>
   );
 };
 
-export default MyEvents;
+const mapStateToProps = ({ usersReducer, eventsReducer }) => {
+  return {
+    usersReducer,
+    eventsReducer,
+  };
+};
+
+const mapDispatchToProps = {
+  eventCreation,
+  loginRequest,
+  signUpRequest,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyEvents);

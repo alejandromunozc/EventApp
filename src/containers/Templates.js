@@ -5,7 +5,8 @@ import "../assets/styles/components/Templates.css";
 
 import HeaderLogo from "../components/HeaderLogo";
 
-const Templates = () => {
+const Templates = (props) => {
+  console.log(props);
   return (
     <>
       <HeaderLogo />
@@ -23,13 +24,12 @@ const Templates = () => {
                     src="https://raw.githubusercontent.com/alejandromunozc/EventApp/frontend/src/assets/img/template-classic.png"
                     alt="Classic"
                   />
-                  <Link to="/myevents">
-                    <button
-                      className="button createEvent__form--button"
-                      name="classic"
-                    >
-                      I like it!
-                    </button>
+                  <Link
+                    to="/myevents"
+                    className="button createEvent__form--button"
+                    name="classic"
+                  >
+                    I like it!
                   </Link>
                 </div>
               </div>

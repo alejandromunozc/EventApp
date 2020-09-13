@@ -1,12 +1,7 @@
+const CURRENT_USER = JSON.parse(localStorage.getItem("user"));
+
 const INITIAL_STATE = {
-  user: {
-    name: "",
-    password: "",
-    email: "",
-    role: "admin",
-    img_url: "",
-    organization: "",
-  },
+  user: CURRENT_USER || {},
 };
 
 export default (state = INITIAL_STATE, action) => {

@@ -18,7 +18,7 @@ const SignupAdmin = (props) => {
     email: "",
     role: "admin",
     img_url: "",
-    organization: props.user.organization,
+    organization: "",
   });
 
   const handleInput = (e) => {
@@ -85,7 +85,7 @@ const SignupAdmin = (props) => {
                     <b>Organization</b>{" "}
                     <small>
                       <b>
-                        <em>e.g. React Colombia</em>
+                        <em>e.g. REACT COLOMBIA</em>
                       </b>
                     </small>
                   </label>
@@ -95,6 +95,7 @@ const SignupAdmin = (props) => {
                     className="login__form--input"
                     type="text"
                     name="organization"
+                    placeholder="e.g. REACT COLOMBIA"
                     required
                   />
                   <br />
