@@ -18,11 +18,15 @@ class ClassicContainer extends Component {
   }
 
   handleOpenModal = (e) => {
-    this.setState({ modalIsOpen: true });
+    this.setState({
+      modalIsOpen: true,
+    });
   };
 
   handleCloseModal = (e) => {
-    this.setState({ modalIsOpen: false });
+    this.setState({
+      modalIsOpen: false,
+    });
   };
 
   render() {

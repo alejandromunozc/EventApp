@@ -1,14 +1,24 @@
-import React, { Fragment } from "react";
+import React from "react";
+import { connect } from "react-redux";
+import { loginRequest, signUpRequest } from "../../../actions/usersActions";
+import { eventCreation } from "../../../actions/eventsActions";
 
-import Modal from "../../../components/Modal";
+import ModalDetails from "./modals/ModalDetails";
 
 import "../../../assets/styles/components/classicTemplate.css";
 
 import classicLogoConf from "../../../assets/static/classic-logo.png";
 
-function ClassicHero(props) {
+function Hero(props) {
+  const eventTitle = props.eventsReducer.form.name;
+  const eventDate = props.eventsReducer.form.date;
+  const eventHour = props.eventsReducer.form.start_hour;
+  const eventLocation = props.eventsReducer.form.location;
+  const eventCity = props.eventsReducer.form.city;
+  const eventCountry = props.eventsReducer.form.country;
+
   return (
-    <Fragment>
+    <>
       <main className="classic__hero">
         <div className="classic__hero--cover">
           <div className="classic__container">
@@ -19,18 +29,17 @@ function ClassicHero(props) {
                   src={classicLogoConf}
                   alt="Conference Logo"
                 />
-                <button
+                {/* <button
                   className="classic__edit-button button"
                   onClick={props.onOpenModal}
                 >
                   Change Logo
                 </button>
-                <Modal isOpen={props.modalIsOpen} onClose={props.onCloseModal}>
-                  <div className="modal__content">
-                    <h3>Hola</h3>
-                  </div>
-                </Modal>
-                <h1 className="classic__hero--title">Event App Draft</h1>
+                <ModalLogo
+                  isOpen={props.modalIsOpen}
+                  onClose={props.onCloseModal}
+                /> */}
+                <h1 className="classic__hero--title">{eventTitle}</h1>
                 <div className="classic__hero--details-location">
                   <div className="classic__location--icon">
                     <img
@@ -38,9 +47,7 @@ function ClassicHero(props) {
                       alt=""
                     />
                   </div>
-                  <div className="classic__location--place">
-                    Bogotá Calle #72 Int 9 - 55 Bogotá 81000
-                  </div>
+                  <div className="classic__location--place">{`${eventLocation} - ${eventCity},${eventCountry}`}</div>
                 </div>
                 <div className="classic__main--details-date">
                   <div className="classic__date--icon">
@@ -50,7 +57,7 @@ function ClassicHero(props) {
                     />
                   </div>
                   <div className="classic__date--starts">
-                    Friday, August 28 Sunday, August 30
+                    {`${eventDate} // ${eventHour}`}
                   </div>
                 </div>
                 <div className="classic__main--details-cta">
@@ -62,31 +69,30 @@ function ClassicHero(props) {
                 >
                   Edit this section
                 </button>
-                <Modal isOpen={props.modalIsOpen} onClose={props.onCloseModal}>
-                  <div className="modal__content">
-                    <h3>Main Configuration</h3>
-                    <form>
-                      <label htmlFor="date">Event Date</label>
-                      <br />
-                      <input type="date" id="date" />
-                      <label>Event Name</label>
-                      <br />
-                      <input type="text" id="eventName" />
-                      <label>Location</label>
-                      <br />
-                      <input type="text" id="eventName" />
-
-                      <button className="button">Submit</button>
-                    </form>
-                  </div>
-                </Modal>
+                <ModalDetails
+                  isOpen={props.modalIsOpen}
+                  onClose={props.onCloseModal}
+                />
               </div>
             </div>
           </div>
         </div>
       </main>
-    </Fragment>
+    </>
   );
 }
 
-export default ClassicHero;
+const mapStateToProps = ({ usersReducer, eventsReducer }) => {
+  return {
+    usersReducer,
+    eventsReducer,
+  };
+};
+
+const mapDispatchToProps = {
+  eventCreation,
+  loginRequest,
+  signUpRequest,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Hero);

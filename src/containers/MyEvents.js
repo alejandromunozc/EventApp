@@ -28,8 +28,6 @@ const MyEvents = (props) => {
     props.history.push("./");
   };
 
-  // useEffect(() => [props.usersReducer, props.eventsReducer]);
-
   return (
     <>
       <HeaderLogo />
