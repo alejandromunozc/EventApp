@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { loginRequest, signUpRequest } from "../actions/usersActions";
-import { eventCreation } from "../actions/eventsActions";
+import { getOrganizationEvents, getEventByID } from "../actions/eventsActions";
 
 const EventList = (props) => {
-  const eventTitle = props.eventsReducer.form.name;
-  const eventDate = props.eventsReducer.form.date;
-  const eventHour = props.eventsReducer.form.hour;
-  const eventLocation = props.eventsReducer.form.location;
-  const eventCity = props.eventsReducer.form.city;
-  const eventCountry = props.eventsReducer.form.country;
+  console.log(props);
+  // const eventTitle = props.eventsReducer.form.name;
+  // const eventDate = props.eventsReducer.form.date;
+  // const eventHour = props.eventsReducer.form.hour;
+  // const eventLocation = props.eventsReducer.form.location;
+  // const eventCity = props.eventsReducer.form.city;
+  // const eventCountry = props.eventsReducer.form.country;
 
   return (
     <section className="currentEvents">
@@ -25,12 +25,12 @@ const EventList = (props) => {
                 src="https://raw.githubusercontent.com/alejandromunozc/EventApp/frontend/src/assets/img/template-classic.png"
                 alt="Classic"
               />
-              <div className="item__title">{eventTitle}</div>
+              <div className="item__title">{}</div>
               <div className="item__details">
-                <div className="item__details--date">{eventDate}</div>
-                <div className="item__details--hour">{eventHour}</div>
-                <div className="item__details--location">{eventLocation}</div>
-                <div className="item__details--location">{`${eventCity}, ${eventCountry}`}</div>
+                <div className="item__details--date">{}</div>
+                <div className="item__details--hour">{}</div>
+                <div className="item__details--location">{}</div>
+                <div className="item__details--location">{}</div>
               </div>
               <Link className="button" to="/classic">
                 Edit
@@ -43,17 +43,11 @@ const EventList = (props) => {
   );
 };
 
-const mapStateToProps = ({ usersReducer, eventsReducer }) => {
-  return {
-    usersReducer,
-    eventsReducer,
-  };
-};
+const mapStateToProps = ({ eventsReducer }) => eventsReducer;
 
 const mapDispatchToProps = {
-  eventCreation,
-  signUpRequest,
-  loginRequest,
+  getOrganizationEvents,
+  getEventByID,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventList);
