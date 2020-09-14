@@ -1,20 +1,20 @@
-.people {
+.minimalistic__people {
   padding: 6% 0;
 }
 
-.people__list h2 {
+.minimalistic__people--list h2 {
   text-transform: uppercase;
   font-size: 2em;
   letter-spacing: 1px;
 }
 
-.people__list hr {
+.minimalistic__people--list hr {
   width: 80px;
   margin: 3% 0;
   border-top: 1px solid var(--primary);
 }
 
-.people__list--speaker {
+.minimalistic__people--speaker {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   background-color: var(--primary);
@@ -23,21 +23,21 @@
   margin-bottom: 1em;
 }
 
-.speaker__img {
+.minimalistic__people--speaker-img {
   grid-column: 1 / span 1;
 }
 
-.speaker__name {
+.minimalistic__people--speaker-name {
   grid-column: 2 / span 6;
   padding: 1.5em;
 }
 
-.speaker__position {
+.minimalistic__people--speaker-position {
   grid-column: 10 / -1;
   padding: 1.5em;
 }
 
-.speaker__img--photo {
+.minimalistic__people--speaker-photo {
   width: 120px;
   min-height: 100%;
   object-fit: cover;
@@ -45,7 +45,7 @@
   opacity: 0.8;
 }
 
-.speaker__name--title {
+.minimalistic__people--speaker-title {
   font-size: 64px;
   text-transform: uppercase;
   font-weight: 500;
@@ -53,7 +53,7 @@
   line-height: 1;
 }
 
-.speaker__name--description {
+.minimalistic__people--speaker-description {
   font-family: var(--serif);
   font-size: 12px;
   font-weight: 100;
@@ -62,8 +62,8 @@
   letter-spacing: 1px;
 }
 
-.speaker__position--title,
-.speaker__position--company {
+.minimalistic__people--position-title,
+.minimalistic__people--position-company {
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 300;

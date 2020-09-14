@@ -1,7 +1,7 @@
 import React from "react";
 
 import HeaderLogo from "../components/HeaderLogo";
-import Header from "../components/templates/minimalistic/Header";
+import HeaderMinimalistic from "../components/templates/minimalistic/Header";
 import Main from "../components/templates/minimalistic/Main";
 import About from "../components/templates/minimalistic/About";
 import ToKnow from "../components/templates/minimalistic/ToKnow";
@@ -16,7 +16,7 @@ const MinimalisticContainer = () => {
   return (
     <>
       <HeaderLogo />
-      <Header />
+      <HeaderMinimalistic />
       <Main />
       <About />
       <ToKnow />

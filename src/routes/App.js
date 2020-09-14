@@ -10,7 +10,7 @@ import MyEvents from "../containers/MyEvents";
 import EventModule from "../containers/EventModule";
 import Templates from "../containers/Templates";
 import ClassicContainer from "../containers/ClassicTemplate";
-// import MinimalistContainer from "../containers/MinimalistTemplate";
+import MinimalistContainer from "../containers/MinimalistTemplate";
 
 const App = () => (
   <BrowserRouter>
@@ -24,7 +24,7 @@ const App = () => (
         <Route exact path="/templates" component={Templates} />
         <Route exact path="/myevents" component={MyEvents} />
         <Route exact path="/classic" component={ClassicContainer} />
-        {/* <Route exact path="/minimalist" component={MinimalistContainer} /> */}
+        <Route exact path="/minimalist" component={MinimalistContainer} />
       </Switch>
     </Layout>
   </BrowserRouter>

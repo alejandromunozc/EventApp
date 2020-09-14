@@ -4,9 +4,9 @@ import "../../../assets/styles/components/templates/minimalisticTemplate/Cta.css
 
 const Cta = () => {
   return (
-    <section className="cta">
+    <section className="minimalistic__cta">
       <div className="container">
-        <div className="cta__info">
+        <div className="minimalistic__cta--info">
           <a href="/">I'm in</a>
           <h3>LifeSwap</h3>
         </div>

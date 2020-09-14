@@ -4,17 +4,17 @@ import "../../../assets/styles/components/templates/minimalisticTemplate/About.c
 
 const About = () => {
   return (
-    <section id="about" className="about">
+    <section id="about" className="minimalistic__about">
       <div className="container">
-        <div className="about__info">
-          <div className="about__cover">
+        <div className="minimalistic__about--info">
+          <div className="minimalistic__about--cover">
             <img
               src="https://images.unsplash.com/photo-1461280360983-bd93eaa5051b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
               alt=""
             />
           </div>
-          <div className="about__content">
-            <div className="about__content--title">About</div>
+          <div className="minimalistic__about--content">
+            <div className="minimalistic__about--content-title">About</div>
             <h2>Why you should care</h2>
             <hr />
             <p>

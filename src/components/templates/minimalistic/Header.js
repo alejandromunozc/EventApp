@@ -1,36 +1,36 @@
 import React from "react";
 
-import "../../../assets/styles/components/templates/minimalistTemplate/Header.css";
+import "../../../assets/styles/components/templates/minimalisticTemplate/Header.css";
 
-const Header = () => {
+const HeaderMinimalistic = () => {
   return (
-    <header class="minimalistic__header">
-      <div class="container">
-        <div class="minimalistic__header--content">
+    <header className="minimalistic__header">
+      <div className="container">
+        <div className="minimalistic__header--content">
           <img
-            class="minimalistic__header--logo"
+            className="minimalistic__header--logo"
             src="https://github.com/alejandromunozc/EventApp/blob/frontend/src/templates/minimalist/img/logo.png?raw=true"
             alt="EventAppDraft"
           />
-          <nav class="minimalistic__header--nav">
+          <nav className="minimalistic__header--nav">
             <ul>
               <li>
-                <a class="minimalistic__nav--item" href="#about">
+                <a className="minimalistic__nav--item" href="#about">
                   About
                 </a>
               </li>
               <li>
-                <a class="minimalistic__nav--item" href="#toKnow">
+                <a className="minimalistic__nav--item" href="#toKnow">
                   Things to know
                 </a>
               </li>
               <li>
-                <a class="minimalistic__nav--item" href="#people">
+                <a className="minimalistic__nav--item" href="#people">
                   People to see
                 </a>
               </li>
               <li>
-                <a class="minimalistic__nav--item" href="#schedule">
+                <a className="minimalistic__nav--item" href="#schedule">
                   Schedule
                 </a>
               </li>
@@ -42,4 +42,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderMinimalistic;

@@ -1,32 +1,32 @@
-.sponsors {
+.minimalistic__sponsors {
   background-color: var(--secondary);
   color: white;
   padding: 6% 0;
 }
 
-.sponsors__info h2 {
+.minimalistic__sponsors--info h2 {
   text-transform: uppercase;
   font-size: 2em;
   letter-spacing: 1px;
 }
 
-.sponsors__info hr {
+.minimalistic__sponsors--info hr {
   width: 80px;
   margin: 3% 0;
   border-top: 1px solid white;
 }
 
-.sponsors__company {
+.minimalistic__sponsors--company {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 3em;
 }
 
-.sponsors__company--item {
+.minimalistic__sponsors--company-item {
   text-align: center;
 }
 
-.company__title {
+.minimalistic__sponsors--company-title {
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 300;
@@ -34,6 +34,6 @@
   margin: 0 0 3em;
 }
 
-.company__logo {
+.minimalistic__sponsors--company-logo {
   height: 80px;
 }

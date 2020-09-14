@@ -1,25 +1,25 @@
-.about {
+.minimalistic__about {
   padding: 6% 0;
 }
 
-.about__info {
+.minimalistic__about--info {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: repeat(6, 1fr);
 }
 
-.about__cover {
+.minimalistic__about--cover {
   grid-column: 1 / span 6;
   grid-row: 1 / span 3;
 }
 
-.about__cover img {
+.minimalistic__about--cover img {
   width: 100%;
   filter: grayscale(1);
   opacity: 0.8;
 }
 
-.about__content {
+.minimalistic__about--content {
   position: relative;
   grid-column: 6 / -1;
   grid-row: 3 / -1;
@@ -27,7 +27,7 @@
   padding: 80px 80px 80px 120px;
 }
 
-.about__content--title {
+.minimalistic__about--content-title {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -40,19 +40,19 @@
   font-weight: 100;
 }
 
-.about__content h2 {
+.minimalistic__about--content h2 {
   text-transform: uppercase;
   font-size: 2em;
   letter-spacing: 1px;
 }
 
-.about__content hr {
+.minimalistic__about--content hr {
   width: 80px;
   margin: 6% 0;
   border-top: 3px solid var(--primary);
 }
 
-.about__content p {
+.minimalistic__about--content p {
   font-family: var(--serif);
   font-size: 14px;
   font-weight: 100;
