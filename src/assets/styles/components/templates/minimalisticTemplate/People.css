@@ -1,0 +1,72 @@
+.people {
+  padding: 6% 0;
+}
+
+.people__list h2 {
+  text-transform: uppercase;
+  font-size: 2em;
+  letter-spacing: 1px;
+}
+
+.people__list hr {
+  width: 80px;
+  margin: 3% 0;
+  border-top: 1px solid var(--primary);
+}
+
+.people__list--speaker {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  background-color: var(--primary);
+  grid-gap: 1em;
+  color: white;
+  margin-bottom: 1em;
+}
+
+.speaker__img {
+  grid-column: 1 / span 1;
+}
+
+.speaker__name {
+  grid-column: 2 / span 6;
+  padding: 1.5em;
+}
+
+.speaker__position {
+  grid-column: 10 / -1;
+  padding: 1.5em;
+}
+
+.speaker__img--photo {
+  width: 120px;
+  min-height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  opacity: 0.8;
+}
+
+.speaker__name--title {
+  font-size: 64px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.speaker__name--description {
+  font-family: var(--serif);
+  font-size: 12px;
+  font-weight: 100;
+  margin: 0.7em 0;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+.speaker__position--title,
+.speaker__position--company {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 0.75em;
+}

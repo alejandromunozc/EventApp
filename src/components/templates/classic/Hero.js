@@ -5,7 +5,7 @@ import { eventCreation } from "../../../actions/eventsActions";
 
 import ModalDetails from "./modals/ModalDetails";
 
-import "../../../assets/styles/components/classicTemplate.css";
+import "../../../assets/styles/components/templates/classicTemplate.css";
 
 import classicLogoConf from "../../../assets/static/classic-logo.png";
 

@@ -1,0 +1,39 @@
+.minimalistic__header {
+  display: flex;
+  height: 130px;
+  padding-top: 6%;
+}
+
+.minimalistic__header--content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.minimalistic__header--logo {
+  height: 130px;
+}
+
+.minimalistic__header--nav {
+  display: flex;
+}
+
+.minimalistic__header--nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.minimalistic__header--nav a {
+  text-decoration: none;
+}
+
+a.minimalistic__nav--item {
+  margin-right: 1.25em;
+  padding: 0.5em;
+  color: var(--primary);
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 2px;
+}

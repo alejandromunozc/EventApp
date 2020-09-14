@@ -1,0 +1,124 @@
+.main {
+  padding-top: 6%;
+  padding-bottom: 6%;
+}
+
+.main__info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2em;
+}
+
+.main__details--date {
+  width: 230px;
+  border: 3px solid var(--primary);
+  box-sizing: border-box;
+}
+
+.details__title {
+  position: absolute;
+  background-color: var(--primary);
+  padding: 1em;
+  font-size: 12px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+
+.details__date {
+  padding: 1em;
+  margin-top: 80px;
+}
+
+.date__month,
+.date__footer {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+.date__day {
+  margin: 16px 0;
+  font-size: 64px;
+  font-weight: 600;
+  letter-spacing: -5px;
+}
+
+.date__day--ends:before {
+  content: "/";
+  margin-right: 10px;
+}
+
+.date__hour--ends:before {
+  content: "To";
+  margin-right: 5px;
+}
+
+.main__details--title {
+  border-right: 3px solid var(--secondary);
+  border-bottom: 3px solid var(--secondary);
+  margin-top: 6%;
+}
+
+.details__title--event {
+  padding: 1em;
+  border: 3px solid var(--primary);
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.details__title--event h1 {
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--secondary);
+  font-size: 64px;
+  letter-spacing: -1px;
+}
+
+.main__details--summary {
+  margin: 6% 0;
+  font-family: "Roboto Slab", serif;
+  font-size: 14px;
+  font-weight: 100;
+  width: 67%;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+.main__details--cta a {
+  background-color: var(--cta);
+  color: var(--primary);
+  padding: 1.5em 6em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: inline-block;
+}
+
+.main__details--cta a:hover {
+  background-color: var(--secondary);
+  color: white;
+}
+
+.main__details--location {
+  margin: 2em 0;
+  font-family: "Roboto Slab", serif;
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+.main__cover {
+  overflow: hidden;
+}
+
+.main__cover img {
+  filter: grayscale(1);
+  min-width: 100%;
+  min-height: 100%;
+}
