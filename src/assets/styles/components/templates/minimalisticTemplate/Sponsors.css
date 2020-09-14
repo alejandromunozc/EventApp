@@ -1,0 +1,39 @@
+.sponsors {
+  background-color: var(--secondary);
+  color: white;
+  padding: 6% 0;
+}
+
+.sponsors__info h2 {
+  text-transform: uppercase;
+  font-size: 2em;
+  letter-spacing: 1px;
+}
+
+.sponsors__info hr {
+  width: 80px;
+  margin: 3% 0;
+  border-top: 1px solid white;
+}
+
+.sponsors__company {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 3em;
+}
+
+.sponsors__company--item {
+  text-align: center;
+}
+
+.company__title {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin: 0 0 3em;
+}
+
+.company__logo {
+  height: 80px;
+}

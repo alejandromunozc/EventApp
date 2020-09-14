@@ -1,0 +1,203 @@
+.toKnow {
+  background-color: var(--secondary);
+  color: white;
+  padding: 3% 0;
+}
+
+.toKnow__info {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+}
+
+.toKnow__alert {
+  grid-column: 1 / span 7;
+  grid-row: 1 / span 4;
+  position: relative;
+  border: 3px solid white;
+  padding: 10%;
+}
+
+.toKnow__alert--tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: white;
+  color: var(--secondary);
+}
+
+.toKnow__alert h3 {
+  text-transform: uppercase;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+}
+
+.toKnow__alert hr {
+  width: 80px;
+  margin: 6% 0;
+  border-top: 3px solid white;
+}
+
+.toKnow__alert p {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+.toKnow__cover {
+  grid-column: 7 / -1;
+  grid-row: 4 / -1;
+}
+
+.toKnow__cover img {
+  width: 100%;
+}
+
+.toKnow__cover p {
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.toKnow__location {
+  grid-column: 1 / span 6;
+  grid-row: 6 / -1;
+  font-family: "Roboto Slab", serif;
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+.location--cta a {
+  background-color: white;
+  color: var(--primary);
+  font-family: var(--sans-serif);
+  margin-top: 2em;
+  padding: 1.5em 6em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  display: inline-block;
+}
+
+.location--cta a:hover {
+  background-color: var(--secondary);
+  color: white;
+  border-top: 3px solid;
+  border-bottom: 3px solid;
+}
+
+.toKnow__counter {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+}
+
+.toKnow__counter--days {
+  grid-column: 1 / span 1;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+.toKnow__counter--hours {
+  grid-column: 3 / span 1;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+.toKnow__counter--title {
+  grid-column: 4 / span 3;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+.toKnow__counter--minutes {
+  grid-column: 7 / span 1;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+.toKnow__counter--seconds {
+  grid-column: 9 / span 1;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+.days__number,
+.hours__number,
+.minutes__number,
+.seconds__number {
+  font-size: 80px;
+  font-weight: 600;
+}
+
+.days__text,
+.hours__text,
+.minutes__text,
+.seconds__text {
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.toKnow__counter--title h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.toKnow__counter--separator {
+  position: relative;
+}
+
+.toKnow__counter--separator hr {
+  position: absolute;
+  width: 100%;
+  top: 35%;
+}
+
+.toKnow__who {
+  padding: 6% 0;
+  width: 60%;
+}
+
+.toKnow__who h3 {
+  text-transform: uppercase;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+}
+
+.toKnow__who hr {
+  width: 80px;
+  margin: 6% 0;
+  border-top: 3px solid white;
+}
+
+.toKnow__who--description {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+.toKnow__who--highlight {
+  margin: 0;
+  font-size: 64px;
+}
