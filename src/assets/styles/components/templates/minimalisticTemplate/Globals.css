@@ -2,13 +2,13 @@
 
 :root {
   /* Typografy */
-  --sans-serif: "Roboto", sans-serif;
-  --serif: "Roboto Slab", serif;
+  --sans-serif-minimalistic: "Roboto", sans-serif;
+  --serif-minimalistic: "Roboto Slab", serif;
 
   /* Colors */
-  --primary: #232323;
-  --secondary: #136758;
-  --cta: #f9b6c6;
+  --primary-minimalistic: #232323;
+  --secondary-minimalistic: #136758;
+  --cta-minimalistic: #f9b6c6;
 }
 
 * {
@@ -18,7 +18,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--sans-serif);
+  font-family: var(--sans-serif-minimalistic);
 }
 
 .container {

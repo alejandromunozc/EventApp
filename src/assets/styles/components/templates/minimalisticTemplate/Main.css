@@ -11,13 +11,13 @@
 
 .minimalistic__main--details-top {
   width: 230px;
-  border: 3px solid var(--primary);
+  border: 3px solid var(--primary-minimalistic);
   box-sizing: border-box;
 }
 
 .minimalistic__main--details-title {
   position: absolute;
-  background-color: var(--primary);
+  background-color: var(--primary-minimalistic);
   padding: 1em;
   font-size: 12px;
   color: white;
@@ -57,14 +57,14 @@
 }
 
 .minimalistic__main--detaills-title {
-  border-right: 3px solid var(--secondary);
-  border-bottom: 3px solid var(--secondary);
+  border-right: 3px solid var(--secondary-minimalistic);
+  border-bottom: 3px solid var(--secondary-minimalistic);
   margin-top: 6%;
 }
 
 .minimalistic__main--title {
   padding: 1em;
-  border: 3px solid var(--primary);
+  border: 3px solid var(--primary-minimalistic);
   margin-right: 5px;
   margin-bottom: 5px;
 }
@@ -72,7 +72,7 @@
 .minimalistic__main--title h1 {
   text-transform: uppercase;
   margin: 0;
-  color: var(--secondary);
+  color: var(--secondary-minimalistic);
   font-size: 64px;
   letter-spacing: -1px;
 }
@@ -88,8 +88,8 @@
 }
 
 .minimalistic__main--details-cta a {
-  background-color: var(--cta);
-  color: var(--primary);
+  background-color: var(--cta-minimalistic);
+  color: var(--primary-minimalistic);
   padding: 1.5em 6em;
   text-transform: uppercase;
   text-decoration: none;
@@ -100,7 +100,7 @@
 }
 
 .minimalistic__main--details-cta a:hover {
-  background-color: var(--secondary);
+  background-color: var(--secondary-minimalistic);
   color: white;
 }
 

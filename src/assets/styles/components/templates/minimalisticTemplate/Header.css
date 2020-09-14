@@ -31,7 +31,7 @@
 a.minimalistic__nav--item {
   margin-right: 1.25em;
   padding: 0.5em;
-  color: var(--primary);
+  color: var(--primary-minimalistic);
   text-transform: uppercase;
   font-weight: 300;
   font-size: 13px;

@@ -1,5 +1,5 @@
 .minimalistic__toKnow {
-  background-color: var(--secondary);
+  background-color: var(--secondary-minimalistic);
   color: white;
   padding: 3% 0;
 }
@@ -27,7 +27,7 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   background-color: white;
-  color: var(--secondary);
+  color: var(--secondary-minimalistic);
 }
 
 .minimalistic__toKnow--alert h3 {
@@ -43,7 +43,7 @@
 }
 
 .minimalistic__toKnow--alert p {
-  font-family: var(--serif);
+  font-family: var(--serif-minimalistic);
   font-size: 14px;
   font-weight: 100;
   line-height: 1.6;
@@ -79,8 +79,8 @@
 
 .minimalistic__toKnow--location-cta a {
   background-color: white;
-  color: var(--primary);
-  font-family: var(--sans-serif);
+  color: var(--primary-minimalistic);
+  font-family: var(--sans-serif-minimalistic);
   margin-top: 2em;
   padding: 1.5em 6em;
   text-transform: uppercase;
@@ -92,7 +92,7 @@
 }
 
 .minimalistic__toKnow--location-cta a:hover {
-  background-color: var(--secondary);
+  background-color: var(--secondary-minimalistic);
   color: white;
   border-top: 3px solid;
   border-bottom: 3px solid;

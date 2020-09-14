@@ -23,7 +23,7 @@
   position: relative;
   grid-column: 6 / -1;
   grid-row: 3 / -1;
-  border: 3px solid var(--primary);
+  border: 3px solid var(--primary-minimalistic);
   padding: 80px 80px 80px 120px;
 }
 
@@ -31,7 +31,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: var(--primary);
+  background-color: var(--primary-minimalistic);
   padding: 1em;
   font-size: 12px;
   color: white;
@@ -49,7 +49,7 @@
 .minimalistic__about--content hr {
   width: 80px;
   margin: 6% 0;
-  border-top: 3px solid var(--primary);
+  border-top: 3px solid var(--primary-minimalistic);
 }
 
 .minimalistic__about--content p {

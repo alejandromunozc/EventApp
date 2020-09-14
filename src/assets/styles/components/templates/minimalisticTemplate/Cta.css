@@ -1,5 +1,5 @@
 .minimalistic__cta {
-  background-color: var(--primary);
+  background-color: var(--primary-minimalistic);
   display: flex;
   align-items: center;
   height: 350px;
@@ -13,8 +13,8 @@
 }
 
 .minimalistic__cta--info a {
-  background-color: var(--cta);
-  color: var(--primary);
+  background-color: var(--cta-minimalistic);
+  color: var(--primary-minimalistic);
   padding: 1.5em 7em;
   text-transform: uppercase;
   text-decoration: none;

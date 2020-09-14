@@ -11,13 +11,13 @@
 .minimalistic__people--list hr {
   width: 80px;
   margin: 3% 0;
-  border-top: 1px solid var(--primary);
+  border-top: 1px solid var(--primary-minimalistic);
 }
 
 .minimalistic__people--speaker {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  background-color: var(--primary);
+  background-color: var(--primary-minimalistic);
   grid-gap: 1em;
   color: white;
   margin-bottom: 1em;
@@ -54,7 +54,7 @@
 }
 
 .minimalistic__people--speaker-description {
-  font-family: var(--serif);
+  font-family: var(--serif-minimalistic);
   font-size: 12px;
   font-weight: 100;
   margin: 0.7em 0;
