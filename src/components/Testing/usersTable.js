@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const UsersTable = (props) => {
   const putRows = () =>
-    props.users.map((user, organization) => (
+    props.users.map((user) => (
       <tr key={user._id}>
         <td>{user._id}</td>
         <td>{user.name}</td>

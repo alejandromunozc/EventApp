@@ -13,6 +13,7 @@ import ClassicContainer from "../containers/ClassicTemplate";
 import MinimalistContainer from "../containers/MinimalistTemplate";
 import testingGetRequest from "../components/Testing/getUsersRequest";
 import OrganizationEvents from "../components/Testing/OrgEvents";
+import OrganizationGetRequest from "../components/Testing/getOrganizationsRequest";
 
 const App = () => (
   <BrowserRouter>
@@ -25,6 +26,7 @@ const App = () => (
           path="/events/:organization"
           component={OrganizationEvents}
         />
+        <Route exact path="/organizations" component={OrganizationGetRequest} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signup/admin" component={SignupAdmin} />
