@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginRequest, signUpRequest } from "../actions/usersActions";
-import {
-  eventCreation,
-  getOrganizationEvents,
-  getEventByID,
-} from "../actions/eventsActions";
+// import {
+//   eventCreation,
+//   getOrganizationEvents,
+//   getEventByID,
+// } from "../actions/eventsActions";
 
 import "../assets/styles/components/MyEvents.css";
 
@@ -129,14 +129,14 @@ const MyEvents = (props) => {
 const mapStateToProps = ({ usersReducer, eventsReducer }) => {
   return {
     usersReducer,
-    eventsReducer,
+    // eventsReducer,
   };
 };
 
 const mapDispatchToProps = {
-  eventCreation,
-  getOrganizationEvents,
-  getEventByID,
+  // eventCreation,
+  // getOrganizationEvents,
+  // getEventByID,
   loginRequest,
   signUpRequest,
 };

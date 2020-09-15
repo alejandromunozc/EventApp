@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getOrganizationEvents, getEventByID } from "../actions/eventsActions";
+// import { getOrganizationEvents, getEventByID } from "../actions/eventsActions";
 
 const EventList = (props) => {
   console.log(props);
@@ -45,9 +45,11 @@ const EventList = (props) => {
 
 const mapStateToProps = ({ eventsReducer }) => eventsReducer;
 
-const mapDispatchToProps = {
-  getOrganizationEvents,
-  getEventByID,
-};
+// const mapDispatchToProps = {
+//   getOrganizationEvents,
+//   getEventByID,
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventList);
+export default connect(mapStateToProps, {
+  /*mapDispatchToProps*/
+})(EventList);

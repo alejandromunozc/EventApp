@@ -1,27 +1,44 @@
-const USER_EVENTS = JSON.parse(localStorage.getItem("event_url"));
+import {
+  EVENT_CREATION,
+  GET_ORG_EVENT,
+  LOADING,
+  ERROR,
+} from "../types/eventsTypes";
+
+const USER_EVENTS = JSON.parse(localStorage.getItem("event"));
 
 const INITIAL_STATE = {
   form: USER_EVENTS || {},
-  eventOrg: [],
-  eventID: [],
+  events: [],
+  // eventID: [],
+  loading: false,
+  error: "",
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "EVENT_CREATION":
+    case EVENT_CREATION:
       return {
         ...state,
         form: action.payload,
       };
-    case "GET_ORG_EVENT":
+    case GET_ORG_EVENT:
       return {
         ...state,
-        eventOrg: action.payload,
+        events: action.payload,
+        loading: false,
+        error: "",
       };
-    case "GET_EVENT_ID":
+    case LOADING:
       return {
         ...state,
-        eventID: action.payload,
+        loading: true,
+      };
+    case ERROR:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false,
       };
     default:
       return state;

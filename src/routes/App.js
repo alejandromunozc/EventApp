@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import LandingPage from "../containers/LandingPage";
+// import LandingPage from "../containers/LandingPage";
 import Layout from "../components/Layout";
 import SignUp from "../containers/SignUp";
 import SignupAdmin from "../containers/SignUpAdmin";
@@ -11,12 +11,20 @@ import EventModule from "../containers/EventModule";
 import Templates from "../containers/Templates";
 import ClassicContainer from "../containers/ClassicTemplate";
 import MinimalistContainer from "../containers/MinimalistTemplate";
+import testingGetRequest from "../components/Testing/getUsersRequest";
+import OrganizationEvents from "../components/Testing/OrgEvents";
 
 const App = () => (
   <BrowserRouter>
     <Layout>
       <Switch>
-        <Route exact path="/" component={LandingPage} />
+        {/* <Route exact path="/" component={LandingPage} /> */}
+        <Route exact path="/" component={testingGetRequest} />
+        <Route
+          exact
+          path="/events/:organization"
+          component={OrganizationEvents}
+        />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/signup/admin" component={SignupAdmin} />

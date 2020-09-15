@@ -1,5 +1,12 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
+import {
+  GET_USER_REQUEST,
+  SIGN_UP_USERS,
+  LOG_IN_USERS,
+  LOADING,
+  ERROR,
+} from "../types/usersTypes";
 
 const cookies = new Cookies();
 
@@ -31,7 +38,7 @@ export const signUpRequest = (user) => (dispatch) => {
       cookies.set("token", response.token, { path: "/" });
       console.log(signupResponse);
       dispatch({
-        type: "SIGNUP_USERS",
+        type: SIGN_UP_USERS,
         payload: signupResponse,
       });
 
@@ -68,7 +75,7 @@ export const loginRequest = (user) => (dispatch) => {
 
         alert(`Welcome, ${loginResponse.name}`);
         dispatch({
-          type: "LOGIN_REQUEST",
+          type: LOG_IN_USERS,
           payload: loginResponse,
         });
         localStorage.setItem("user", JSON.stringify(loginResponse));
@@ -78,4 +85,24 @@ export const loginRequest = (user) => (dispatch) => {
         alert("Email or password is wrong!");
       }
     });
+};
+
+export const getUsersRequest = () => async (dispatch) => {
+  dispatch({
+    type: LOADING,
+  });
+  try {
+    const response = await axios.get("http://eventapp.koalab.tech/api/users");
+    // console.log("users: ", response.data);
+    dispatch({
+      type: GET_USER_REQUEST,
+      payload: response.data.users,
+    });
+  } catch (error) {
+    console.log("Error: ", error.message);
+    dispatch({
+      type: ERROR,
+      payload: error.message,
+    });
+  }
 };

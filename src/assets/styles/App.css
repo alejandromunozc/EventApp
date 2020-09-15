@@ -68,6 +68,20 @@ body {
   cursor: pointer;
 }
 
+.table__testing {
+  margin: 50px auto;
+}
+
+.spinner-error__center {
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.warning__color {
+  color: var(--orange-secondary);
+}
+
 @media (max-width: 1024px) {
   .container {
     padding: 0 1em;
