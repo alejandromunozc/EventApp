@@ -1,8 +1,4 @@
-import {
-  GET_ORG_REQUEST,
-  LOADING_ORGANIZATION,
-  ERROR_ORGANIZATION,
-} from "../types/organizationsTypes";
+import { GET_ORG_REQUEST, LOADING, ERROR } from "../types/organizationsTypes";
 
 const INITIAL_STATE = {
   organizations: [],
@@ -16,14 +12,16 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         organizations: action.payload,
+        loading: false,
+        error: "",
       };
-    case LOADING_ORGANIZATION:
+    case LOADING:
       return {
         ...state,
         loading: true,
         error: "",
       };
-    case ERROR_ORGANIZATION:
+    case ERROR:
       return {
         ...state,
         error: action.payload,

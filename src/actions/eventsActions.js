@@ -1,15 +1,11 @@
 import axios from "axios";
 import Moment from "moment";
 
-import {
-  EVENT_CREATION,
-  GET_ORG_EVENT,
-  LOADING,
-  ERROR,
-} from "../types/eventsTypes";
+import { EVENT_CREATION, GET_ORG_EVENT } from "../types/eventsTypes";
 
 export const eventCreation = (event) => (dispatch) => {
-  const BASE_URL = "http://eventapp.koalab.tech/api/events/";
+  // const BASE_URL = "http://eventapp.koalab.tech/api/events/";
+  const BASE_URL = "http://localhost:3001/api/events";
 
   const data = JSON.stringify({
     name: event.name,
@@ -41,7 +37,7 @@ export const eventCreation = (event) => (dispatch) => {
         type: EVENT_CREATION,
         payload: eventCreationResponse,
       });
-      localStorage.setItem("event", JSON.stringify(eventCreationResponse));
+      localStorage.setItem("event_url", JSON.stringify(eventCreationResponse));
       window.location.href = "./templates";
     })
     .catch((error) => {
@@ -52,10 +48,10 @@ export const eventCreation = (event) => (dispatch) => {
 export const getOrganizationEventsByID = () => async (dispatch, getState) => {
   const { organizations } = getState().organizationsReducer;
 
-  const organization_id = organizations.name;
+  const organization_id = organizations._id;
 
   const response = await axios.get(
-    `http://eventapp.koalab.tech/api/events/${organization_id}`
+    `http://localhost:3001/api/events/org/${organization_id}`
   );
   dispatch({
     type: GET_ORG_EVENT,

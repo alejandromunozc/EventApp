@@ -5,12 +5,11 @@ import {
   ERROR,
 } from "../types/eventsTypes";
 
-const USER_EVENTS = JSON.parse(localStorage.getItem("event"));
+const USER_EVENTS = JSON.parse(localStorage.getItem("event_url"));
 
 const INITIAL_STATE = {
   form: USER_EVENTS || {},
   events: [],
-  // eventID: [],
   loading: false,
   error: "",
 };
