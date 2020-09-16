@@ -12,7 +12,7 @@ import Templates from "../containers/Templates";
 import ClassicContainer from "../containers/ClassicTemplate";
 import MinimalistContainer from "../containers/MinimalistTemplate";
 import testingGetRequest from "../components/Testing/getUsersRequest";
-import OrganizationEvents from "../components/Testing/OrgEvents";
+import GetEventsByOrganization from "../components/Testing/getEventsByOrganization";
 import OrganizationGetRequest from "../components/Testing/getOrganizationsRequest";
 
 const App = () => (
@@ -21,11 +21,7 @@ const App = () => (
       <Switch>
         {/* <Route exact path="/" component={LandingPage} /> */}
         <Route exact path="/" component={testingGetRequest} />
-        <Route
-          exact
-          path="/events/:organization"
-          component={OrganizationEvents}
-        />
+        <Route exact path="/events/:_id" component={GetEventsByOrganization} />
         <Route exact path="/organizations" component={OrganizationGetRequest} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />

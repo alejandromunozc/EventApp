@@ -7,9 +7,7 @@ const OrganizationsTable = (props) => {
     props.organizations.map((organization) => (
       <tr key={organization._id}>
         <td>
-          <Link to={`/organizations/${organization._id}`}>
-            {organization._id}
-          </Link>
+          <Link to={`/events/${organization._id}`}>{organization._id}</Link>
         </td>
         <td>
           <b>{organization.name}</b>
