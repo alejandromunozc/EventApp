@@ -49,9 +49,13 @@ export const eventCreation = (event) => (dispatch) => {
     });
 };
 
-export const getOrganizationEventsByID = () => async (dispatch) => {
+export const getOrganizationEventsByID = () => async (dispatch, getState) => {
+  const { organizations } = getState().organizationsReducer;
+
+  const organization_id = organizations.name;
+
   const response = await axios.get(
-    "http://eventapp.koalab.tech/api/events?_id=5f61340c5ed82004887c760a"
+    `http://eventapp.koalab.tech/api/events/${organization_id}`
   );
   dispatch({
     type: GET_ORG_EVENT,

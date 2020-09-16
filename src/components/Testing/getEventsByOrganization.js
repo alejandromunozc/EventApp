@@ -23,7 +23,7 @@ class GetEventsByOrganization extends Component {
       <>
         <HeaderLogo />
         <h1>Events of {}</h1>
-        <div>{this.props.match.params._id}</div>
+        <div>{this.props.match.params.name}</div>
       </>
     );
   }
