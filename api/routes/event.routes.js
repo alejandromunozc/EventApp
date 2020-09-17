@@ -11,7 +11,7 @@ const {
     deleteEvent
 } = require('../controllers/event.controller');
 
-router.get('/api/events', getEvents);
+router.get('/api/events/org/:id', getEvents);
 router.get('/api/events/:id', getEvent);
 router.post('/api/events', authVerifyToken, createEvent);
 router.put('/api/events/:id', authVerifyToken, bufferImg, s3Upload, updateEvent);

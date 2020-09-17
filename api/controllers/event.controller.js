@@ -3,8 +3,10 @@ const eventController = {};
 const eventModel = require('../lib/models/event');
 
 eventController.getEvents = async(req, res) => {
+    const { id } = req.params;
     try {
-        const events = await eventModel.find({ organization: req.body.organization });
+        const events = await eventModel.find({ organization: id });
+        console.log(events)
         res.json({ events });
     } catch (error) {
         res.json({ message: 'Error' });

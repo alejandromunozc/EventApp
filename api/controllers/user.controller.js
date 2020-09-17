@@ -134,6 +134,7 @@ userController.signupUser = async(req, res) => {
     try {
         const newOrganization = await new organizationModel({ name: req.body.organization });
         await newOrganization.save();
+        user.organization = newOrganization.id;
         await user.save();
         res.json({ auth: true, user: user, token: token });
     } catch (error) {
