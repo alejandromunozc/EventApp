@@ -8,7 +8,7 @@ export const getOrganizationRequest = () => async (dispatch) => {
   });
   try {
     const response = await axios.get(
-      "http://eventapp.koalab.tech/api/organizations/"
+      "http://localhost:3001/api/organizations/"
     );
     dispatch({
       type: GET_ORG_REQUEST,
@@ -22,3 +22,5 @@ export const getOrganizationRequest = () => async (dispatch) => {
     });
   }
 };
+
+// "http://eventapp.koalab.tech/api/organizations/";

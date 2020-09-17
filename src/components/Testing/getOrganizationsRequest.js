@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import * as organizationsActions from "../../actions/organizationsActions";
 import HeaderLogo from "../HeaderLogo";
@@ -27,6 +28,7 @@ class OrganizationGetRequest extends Component {
     return (
       <>
         <HeaderLogo />
+        <Link to="/reg-users">Registered Users</Link>
         <h1 className="spinner-error__center">EventApp Organizations</h1>
         <div>{this.putOrganizationList()}</div>
       </>

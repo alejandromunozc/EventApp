@@ -2,19 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { loginRequest, signUpRequest } from "../actions/usersActions";
-// import {
-//   eventCreation,
-//   getOrganizationEvents,
-//   getEventByID,
-// } from "../actions/eventsActions";
 
 import "../assets/styles/components/MyEvents.css";
 
 import HeaderLogo from "../components/HeaderLogo";
 import EventList from "../components/EventList";
 import DiffusionModule from "../components/DiffusionModule";
-
-// import Modal from "../components/Modal";
 
 import iconLogo from "../assets/static/icon.png";
 
@@ -86,35 +79,9 @@ const MyEvents = (props) => {
                 </div>
               </div>
               <div className="collaborators__addnew">
-                <button
-                  className="collaborators__button button"
-                  // onClick={this.handleOpenModal}
-                >
+                <button className="collaborators__button button">
                   Add new collaborator
                 </button>
-                {/* <Modal
-                  isOpen={this.state.modalIsOpen}
-                  onClose={this.handleCloseModal}
-                >
-                  <div className="modal__content">
-                    <h3>Add new collaborator</h3>
-                    <form>
-                      <label htmlFor="email">E-mail Address</label>
-                      <br />
-                      <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        onChange={this.handleChange}
-                        value={form.email}
-                      />
-
-                      <button className="button" onClick={this.requestPost}>
-                        Submit
-                      </button>
-                    </form>
-                  </div>
-                </Modal> */}
               </div>
             </div>
           </div>
@@ -129,14 +96,10 @@ const MyEvents = (props) => {
 const mapStateToProps = ({ usersReducer, eventsReducer }) => {
   return {
     usersReducer,
-    // eventsReducer,
   };
 };
 
 const mapDispatchToProps = {
-  // eventCreation,
-  // getOrganizationEvents,
-  // getEventByID,
   loginRequest,
   signUpRequest,
 };

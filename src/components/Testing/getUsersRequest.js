@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import * as usersActions from "../../actions/usersActions";
 import HeaderLogo from "../HeaderLogo";
@@ -27,6 +28,7 @@ class testingGetRequest extends Component {
     return (
       <>
         <HeaderLogo />
+        <Link to="/organizations">Organizations</Link>
         <h1 className="spinner-error__center">EventApp Registered Users</h1>
         <div>{this.putUserList()}</div>
       </>

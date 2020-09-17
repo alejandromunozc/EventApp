@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // import LandingPage from "../containers/LandingPage";
 import Layout from "../components/Layout";
+import LandingPage from "../containers/LandingPage";
 import SignUp from "../containers/SignUp";
 import SignupAdmin from "../containers/SignUpAdmin";
 import Login from "../containers/Login";
@@ -19,8 +20,8 @@ const App = () => (
   <BrowserRouter>
     <Layout>
       <Switch>
-        {/* <Route exact path="/" component={LandingPage} /> */}
-        <Route exact path="/" component={testingGetRequest} />
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/reg-users" component={testingGetRequest} />
         <Route exact path="/events/:_id" component={GetEventsByOrganization} />
         <Route exact path="/organizations" component={OrganizationGetRequest} />
         <Route exact path="/login" component={Login} />

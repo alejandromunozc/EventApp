@@ -30,7 +30,6 @@ const SignupAdmin = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(form);
     props.signUpRequest(form);
     props.history.push("/event-module");
   };

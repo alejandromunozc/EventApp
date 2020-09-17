@@ -1,7 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { loginRequest, signUpRequest } from "../../../actions/usersActions";
-import { eventCreation } from "../../../actions/eventsActions";
 
 import ModalDetails from "./modals/ModalDetails";
 
@@ -9,13 +7,13 @@ import "../../../assets/styles/components/templates/classicTemplate.css";
 
 import classicLogoConf from "../../../assets/static/classic-logo.png";
 
-function Hero(props) {
-  const eventTitle = props.eventsReducer.form.name;
-  const eventDate = props.eventsReducer.form.date;
-  const eventHour = props.eventsReducer.form.start_hour;
-  const eventLocation = props.eventsReducer.form.location;
-  const eventCity = props.eventsReducer.form.city;
-  const eventCountry = props.eventsReducer.form.country;
+const Hero = (props) => {
+  const eventTitle = props.eventsReducer.events.name;
+  const eventDate = props.eventsReducer.events.date;
+  const eventHour = props.eventsReducer.events.start_hour;
+  const eventLocation = props.eventsReducer.events.location;
+  const eventCity = props.eventsReducer.events.city;
+  const eventCountry = props.eventsReducer.events.country;
 
   return (
     <>
@@ -80,7 +78,7 @@ function Hero(props) {
       </main>
     </>
   );
-}
+};
 
 const mapStateToProps = ({ usersReducer, eventsReducer }) => {
   return {
@@ -89,10 +87,4 @@ const mapStateToProps = ({ usersReducer, eventsReducer }) => {
   };
 };
 
-const mapDispatchToProps = {
-  eventCreation,
-  loginRequest,
-  signUpRequest,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Hero);
+export default connect(mapStateToProps)(Hero);

@@ -1,7 +1,12 @@
 import axios from "axios";
 import Moment from "moment";
 
-import { EVENT_CREATION, GET_ORG_EVENT } from "../types/eventsTypes";
+import {
+  EVENT_CREATION,
+  GET_ORG_EVENT,
+  LOADING,
+  ERROR,
+} from "../types/eventsTypes";
 
 export const eventCreation = (event) => (dispatch) => {
   // const BASE_URL = "http://eventapp.koalab.tech/api/events/";
@@ -37,24 +42,31 @@ export const eventCreation = (event) => (dispatch) => {
         type: EVENT_CREATION,
         payload: eventCreationResponse,
       });
-      localStorage.setItem("event_url", JSON.stringify(eventCreationResponse));
-      window.location.href = "./templates";
+      localStorage.setItem("events_url", JSON.stringify(eventCreationResponse));
+      // window.location.href = "./templates";
     })
     .catch((error) => {
       console.log(error);
     });
 };
 
-export const getOrganizationEventsByID = () => async (dispatch, getState) => {
-  const { organizations } = getState().organizationsReducer;
-
-  const organization_id = organizations._id;
-
-  const response = await axios.get(
-    `http://localhost:3001/api/events/org/${organization_id}`
-  );
+export const getOrganizationEventsByID = (id) => async (dispatch) => {
   dispatch({
-    type: GET_ORG_EVENT,
-    payload: response,
+    type: LOADING,
   });
+  try {
+    const response = await axios.get(
+      `http://localhost:3001/api/events/org/${id}`
+    );
+    dispatch({
+      type: GET_ORG_EVENT,
+      payload: response.data.events,
+    });
+  } catch (error) {
+    console.log("Error: ", error.message);
+    dispatch({
+      type: ERROR,
+      payload: error.message,
+    });
+  }
 };

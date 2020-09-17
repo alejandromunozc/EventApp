@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "../assets/styles/components/Footer.css";
 
@@ -12,10 +13,13 @@ function Footer() {
           <img className="footer__logo" src={teamLogo} alt="Code Warriors" />
           <div className="footer__description">
             <span>
-              Made with{" "}
-              <span role="img" aria-label="green-heart">
-                💚
-              </span>{" "}
+              Made with
+              <Link to="/reg-users">
+                {" "}
+                <span role="img" aria-label="green-heart">
+                  💚
+                </span>{" "}
+              </Link>
               from Platzi Master | 2020
             </span>
           </div>

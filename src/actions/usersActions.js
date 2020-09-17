@@ -95,7 +95,6 @@ export const getUsersRequest = () => async (dispatch) => {
   });
   try {
     const response = await axios.get("http://eventapp.koalab.tech/api/users");
-    // console.log("users: ", response.data);
     dispatch({
       type: GET_USER_REQUEST,
       payload: response.data.users,

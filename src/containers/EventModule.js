@@ -32,9 +32,8 @@ const EventModule = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(form);
     props.eventCreation(form);
-    // props.history.push("/templates");
+    props.history.push("/templates");
   };
 
   return (

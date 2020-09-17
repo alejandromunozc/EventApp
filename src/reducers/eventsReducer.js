@@ -5,7 +5,9 @@ import {
   ERROR,
 } from "../types/eventsTypes";
 
-const USER_EVENTS = JSON.parse(localStorage.getItem("event_url"));
+const USER_EVENTS = (window.onload = function () {
+  localStorage.getItem("events_url");
+});
 
 const INITIAL_STATE = {
   form: USER_EVENTS || {},
