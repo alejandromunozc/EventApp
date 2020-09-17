@@ -35,6 +35,17 @@ class EventList extends Component {
                   Edit
                 </Link>
               </div>
+              <div className="item__event">
+                <img
+                  src="https://raw.githubusercontent.com/alejandromunozc/EventApp/frontend/src/assets/img/template-minimal.png"
+                  alt="Minimal"
+                />
+                <div className="item__title">{}</div>
+                <CardEvent />
+                <Link className="button" to="/minimalist">
+                  Edit
+                </Link>
+              </div>
             </div>
           </div>
         </div>
