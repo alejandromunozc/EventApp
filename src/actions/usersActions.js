@@ -11,8 +11,8 @@ import {
 const cookies = new Cookies();
 
 export const signUpRequest = (user) => (dispatch) => {
-  // const BASE_URL = "http://eventapp.koalab.tech/api/signup/";
-  const BASE_URL = "http://localhost:3001/api/signup/";
+  const BASE_URL = "http://eventapp.koalab.tech/api/signup/";
+  // const BASE_URL = "http://localhost:3001/api/signup/";
 
   const data = JSON.stringify({
     name: user.name,
@@ -52,8 +52,8 @@ export const signUpRequest = (user) => (dispatch) => {
 };
 
 export const loginRequest = (user) => (dispatch) => {
-  // const BASE_URL = "http://eventapp.koalab.tech/api/login/";
-  const BASE_URL = "http://localhost:3001/api/login/";
+  const BASE_URL = "http://eventapp.koalab.tech/api/login/";
+  // const BASE_URL = "http://localhost:3001/api/login/";
 
   const data = JSON.stringify({
     email: user.email,

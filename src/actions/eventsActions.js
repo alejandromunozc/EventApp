@@ -9,8 +9,8 @@ import {
 } from "../types/eventsTypes";
 
 export const eventCreation = (event) => (dispatch) => {
-  // const BASE_URL = "http://eventapp.koalab.tech/api/events/";
-  const BASE_URL = "http://localhost:3001/api/events";
+  const BASE_URL = "http://eventapp.koalab.tech/api/events/";
+  // const BASE_URL = "http://localhost:3001/api/events";
 
   const data = JSON.stringify({
     name: event.name,
@@ -56,7 +56,7 @@ export const getOrganizationEventsByID = (id) => async (dispatch) => {
   });
   try {
     const response = await axios.get(
-      `http://localhost:3001/api/events/org/${id}`
+      `http://eventapp.koalab.tech/api/events/org/${id}`
     );
     dispatch({
       type: GET_ORG_EVENT,
