@@ -5,6 +5,7 @@ import {
   ERROR,
 } from "../types/eventsTypes";
 
+// Validar si existe Windows.onload
 const USER_EVENTS = (window.onload = function () {
   localStorage.getItem("events_url");
 });

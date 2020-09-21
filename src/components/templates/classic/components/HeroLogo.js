@@ -14,11 +14,11 @@ const HeroLogo = (props) => {
       />
       <button
         className="classic__edit-button button"
-        // onClick={props.onOpenModal}
+      // onClick={props.onOpenModal}
       >
         Change your Logo
       </button>
-      {/* <ModalLogo isOpen={props.modalIsOpen} onClose={props.onCloseModal} /> */}
+      {/* <ModalLogo isOpen={props.modalIsOpen} onClose={props.onCloseModal} /> Eliminar comentarios */}
     </div>
   );
 };

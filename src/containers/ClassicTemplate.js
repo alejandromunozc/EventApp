@@ -8,6 +8,7 @@ import Speakers from "../components/templates/classic/Speakers";
 import Schedule from "../components/templates/classic/Schedule";
 import Partners from "../components/templates/classic/Partners";
 
+// Cambiar la logica a funciones y utilizar hooks
 class ClassicContainer extends Component {
   constructor(props) {
     super(props);

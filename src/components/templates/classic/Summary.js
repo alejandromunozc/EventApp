@@ -1,5 +1,6 @@
 import React from "react";
 
+// Webpack Resolve https://webpack.js.org/configuration/resolve/
 import classicLogoConf from "../../../assets/static/classic-logo.png";
 
 const Summary = () => {

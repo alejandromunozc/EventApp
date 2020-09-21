@@ -11,13 +11,10 @@ import DiffusionModule from "../components/DiffusionModule";
 
 import iconLogo from "../assets/static/icon.png";
 
-/*----------------------------------------------------------------*/
-
 const MyEvents = (props) => {
-  console.log(props);
+  console.log(props); // Eliminar comentarios
 
   const userName = props.usersReducer.user.name;
-
   const organization = props.usersReducer.user.organization;
 
   const logOut = () => {
@@ -64,7 +61,7 @@ const MyEvents = (props) => {
         <div className="container">
           <div className="organization__content">
             <div className="organization__title">Organization</div>
-            <div className="organization__company"> {organization} </div>
+            <div className="organization__company">{organization}</div>
           </div>
         </div>
       </section>
@@ -93,6 +90,7 @@ const MyEvents = (props) => {
   );
 };
 
+// No estas utilizando eventsReducers
 const mapStateToProps = ({ usersReducer, eventsReducer }) => {
   return {
     usersReducer,

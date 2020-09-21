@@ -6,9 +6,10 @@ import * as eventsActions from "../actions/eventsActions";
 
 import CardEvent from "./CardEvent";
 
+// No utilizar clases
 class EventList extends Component {
   async componentDidMount() {
-    // validamos que si no tiene usuarios, traerlos.
+    // validamos que si no tiene usuarios, traerlos. // Eliminar comentarios
     if (!this.props.organizationsReducer.organizations.length) {
       await this.props.getOrganizationRequest();
     }
@@ -26,7 +27,7 @@ class EventList extends Component {
             <div className="currentEvents__list">
               <div className="item__event">
                 <img
-                  src="https://raw.githubusercontent.com/alejandromunozc/EventApp/frontend/src/assets/img/template-classic.png"
+                  src="https://raw.githubusercontent.com/alejandromunozc/EventApp/frontend/src/assets/img/template-classic.png" // Utiliar CDN
                   alt="Classic"
                 />
                 <div className="item__title">{}</div>

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 const CardEvent = (props) => {
+  // Separarlo a otro componente
   const putEventInfo = () =>
     props.events.map((event) => (
       <div className="item__details" key={event._id}>
