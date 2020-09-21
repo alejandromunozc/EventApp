@@ -2,18 +2,18 @@ const eventController = {};
 
 const eventModel = require('../lib/models/event');
 
-eventController.getEvents = async(req, res) => {
+eventController.getEvents = async (req, res) => {
     const { id } = req.params;
     try {
         const events = await eventModel.find({ organization: id });
-        console.log(events)
+        console.log(events) // Eliminar console.log
         res.json({ events });
     } catch (error) {
         res.json({ message: 'Error' });
     }
 }
 
-eventController.getEvent = async(req, res) => {
+eventController.getEvent = async (req, res) => {
     const { id } = req.params;
     try {
         const event = await eventModel.findOne({ _id: id });
@@ -23,7 +23,7 @@ eventController.getEvent = async(req, res) => {
     }
 }
 
-eventController.createEvent = async(req, res) => {
+eventController.createEvent = async (req, res) => {
     const {
         name,
         info,
@@ -54,7 +54,7 @@ eventController.createEvent = async(req, res) => {
     }
 }
 
-eventController.updateEvent = async(req, res) => {
+eventController.updateEvent = async (req, res) => {
     const { id } = req.params;
     const event = await eventModel.findOne({ _id: id });
     const newData = {
@@ -96,7 +96,7 @@ eventController.updateEvent = async(req, res) => {
     }
 }
 
-eventController.deleteEvent = async(req, res) => {
+eventController.deleteEvent = async (req, res) => {
     try {
         await eventModel.findByIdAndDelete(req.params.id);
         res.json({ id: req.params.id });

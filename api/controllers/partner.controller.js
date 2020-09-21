@@ -1,9 +1,9 @@
 const partnerController = {};
 
 const partnerModel = require('../lib/models/partner');
-const eventModel = require('../lib/models/event')
+const eventModel = require('../lib/models/event');
 
-partnerController.getPartners = async(req, res) => {
+partnerController.getPartners = async (req, res) => {
     try {
         const eventPartners = await eventModel.findOne({ _id: req.body.idEvent });
         const partners = await partnerModel.find({ _id: { $in: eventPartners.partners } });
@@ -13,7 +13,7 @@ partnerController.getPartners = async(req, res) => {
     }
 }
 
-partnerController.getPartner = async(req, res) => {
+partnerController.getPartner = async (req, res) => {
     const { id } = req.params;
     try {
         const partner = await partnerModel.findOne({ _id: id });
@@ -23,7 +23,7 @@ partnerController.getPartner = async(req, res) => {
     }
 }
 
-partnerController.createPartner = async(req, res) => {
+partnerController.createPartner = async (req, res) => {
     const { name, url, img_url } = req.body;
     const newPartner = new partnerModel({ name, url, img_url });
     try {
@@ -38,7 +38,7 @@ partnerController.createPartner = async(req, res) => {
     }
 }
 
-partnerController.updatePartner = async(req, res) => {
+partnerController.updatePartner = async (req, res) => {
     const { id } = req.params;
     const partner = await partnerModel.findOne({ _id: id });
     const newData = {
@@ -56,7 +56,7 @@ partnerController.updatePartner = async(req, res) => {
     }
 }
 
-partnerController.deletePartner = async(req, res) => {
+partnerController.deletePartner = async (req, res) => {
     try {
         await partnerModel.findByIdAndDelete(req.params.id);
         res.json({ id: req.params.id });

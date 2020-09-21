@@ -2,7 +2,7 @@ const { config } = require('../config');
 const aws = require('aws-sdk');
 const { v4: uuidv4 } = require('uuid');
 
-const s3Upload = async(req, res, next) => {
+const s3Upload = async (req, res, next) => {
 
     const s3 = new aws.S3({
         accessKeyId: config.awsId,
@@ -22,7 +22,8 @@ const s3Upload = async(req, res, next) => {
             Body: req.files[0].buffer
         }
 
-        s3.upload(params, async(error, data) => {
+        s3.upload(params, async (error, data) => {
+            // Considerar esta logica es probable que sean mas elementos a subir y muchos Ifs no es recomendable.
             if (error) {
                 return error;
             };
