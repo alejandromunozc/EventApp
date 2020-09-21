@@ -3,7 +3,7 @@ const speakerController = {};
 const SpeackerModel = require('../lib/models/speaker');
 const eventModel = require('../lib/models/event')
 
-speakerController.getSpeakers = async(req, res) => {
+speakerController.getSpeakers = async (req, res) => {
 
     try {
         const eventSpeakers = await eventModel.findOne({ _id: req.body.idEvent });
@@ -15,7 +15,7 @@ speakerController.getSpeakers = async(req, res) => {
     }
 }
 
-speakerController.getSpeaker = async(req, res) => {
+speakerController.getSpeaker = async (req, res) => {
     const { id } = req.params
     try {
         const speaker = await SpeackerModel.findOne({ _id: id });
@@ -25,7 +25,7 @@ speakerController.getSpeaker = async(req, res) => {
     }
 }
 
-speakerController.createSpeaker = async(req, res) => {
+speakerController.createSpeaker = async (req, res) => {
     const { name, bio, role, twitter, img_url } = req.body;
     const newSpeaker = new SpeackerModel({ name, bio, role, twitter, img_url });
     try {
@@ -40,7 +40,7 @@ speakerController.createSpeaker = async(req, res) => {
     }
 }
 
-speakerController.updateSpeaker = async(req, res) => {
+speakerController.updateSpeaker = async (req, res) => {
     const { id } = req.params
     const speaker = await SpeackerModel.findOne({ _id: id });
     const newData = {
@@ -60,7 +60,7 @@ speakerController.updateSpeaker = async(req, res) => {
     }
 }
 
-speakerController.deleteSpeaker = async(req, res) => {
+speakerController.deleteSpeaker = async (req, res) => {
     try {
         await SpeackerModel.findByIdAndDelete(req.params.id);
         res.json({ id: req.params.id });

@@ -6,7 +6,7 @@ const sendMessage = require('./mailgun');
 const today = moment().toISOString();
 const tomorrow = moment().add(1, 'days').toISOString();
 
-const getEventsDate = async() => {
+const getEventsDate = async () => {
     const events = await eventModel.find({ "date": { $gte: today, $lte: tomorrow } });
     events.map(async event => {
         if (event.register.length <= 0 || event.sendedMail === "true") {
@@ -23,10 +23,9 @@ const getEventsDate = async() => {
 
         sendMessage(sendTo, JSON.stringify(mailData));
         await eventModel.findByIdAndUpdate(event.id, { $set: { sendedMail: "true" } });
-    })
+    });
 }
-
 
 cron.schedule('0 * * * *', () => {
     getEventsDate();
-})
+});

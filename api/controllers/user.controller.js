@@ -5,17 +5,16 @@ const organizationModel = require('../lib/models/organization');
 const { config } = require('../config');
 const jwt = require('jsonwebtoken');
 
-userController.getUsers = async(req, res) => {
+userController.getUsers = async (req, res) => {
     try {
         const users = await userModel.find();
         res.json({ users });
     } catch (error) {
         res.json({ message: 'Error' });
     }
-
 }
 
-userController.getUser = async(req, res) => {
+userController.getUser = async (req, res) => {
     const { id } = req.params
     try {
         const user = await userModel.findOne({ _id: id });
@@ -25,7 +24,7 @@ userController.getUser = async(req, res) => {
     }
 }
 
-userController.createUser = async(req, res) => {
+userController.createUser = async (req, res) => {
     const {
         name,
         password,
@@ -42,24 +41,24 @@ userController.createUser = async(req, res) => {
         img_url,
         organization
     });
-    console.log('members');
+    console.log('members'); // Eliminar console.log
     let members = await organizationModel.findOne({ name: req.body.organization });
 
     members.members[members.members.length] = req.body.email;
-    console.log(members);
+    console.log(members); // Eliminar console.log
     await organizationModel.findByIdAndUpdate(members._id, { $set: members });
     try {
 
         await newUser.save();
         res.json({ user: newUser });
     } catch (error) {
-        console.log('members 2');
+        console.log('members 2'); // Eliminar console.log
         res.json({ message: error });
     }
 
 }
 
-userController.updateUser = async(req, res) => {
+userController.updateUser = async (req, res) => {
     const { id } = req.params;
     const user = await userModel.findOne({ _id: id });
     const newData = {
@@ -79,7 +78,7 @@ userController.updateUser = async(req, res) => {
     }
 }
 
-userController.deleteUser = async(req, res) => {
+userController.deleteUser = async (req, res) => {
     try {
         await userModel.findByIdAndDelete(req.params.id);
         res.json({ id: req.params.id, message: 'User deleted' });
@@ -88,7 +87,7 @@ userController.deleteUser = async(req, res) => {
     }
 }
 
-userController.loginUser = async(req, res) => {
+userController.loginUser = async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await userModel.findOne({ email: email });
@@ -110,7 +109,7 @@ userController.loginUser = async(req, res) => {
     }
 }
 
-userController.signupUser = async(req, res) => {
+userController.signupUser = async (req, res) => {
     const {
         name,
         role,
