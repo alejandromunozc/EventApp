@@ -1,7 +1,9 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-// import LandingPage from "../containers/LandingPage";
+// import LandingPage from "../containers/LandingPage"; // Eliminar comentarios
+
+// Pueden implementar Wepack Resolve para evitar tener ../../ https://webpack.js.org/configuration/resolve/
 import Layout from "../components/Layout";
 import LandingPage from "../containers/LandingPage";
 import SignUp from "../containers/SignUp";
@@ -16,6 +18,7 @@ import testingGetRequest from "../components/Testing/getUsersRequest";
 import GetEventsByOrganization from "../components/Testing/getEventsByOrganization";
 import OrganizationGetRequest from "../components/Testing/getOrganizationsRequest";
 
+// No encoentre la resonsabilidad del login para proteger rutas.
 const App = () => (
   <BrowserRouter>
     <Layout>

@@ -6,7 +6,7 @@ import "../assets/styles/components/Templates.css";
 import HeaderLogo from "../components/HeaderLogo";
 
 const Templates = (props) => {
-  console.log(props);
+  console.log(props); // Eliminar console log
   return (
     <>
       <HeaderLogo />
@@ -21,7 +21,7 @@ const Templates = (props) => {
                 <div className="item__title">Classic</div>
                 <div className="item__showcase">
                   <img
-                    src="https://raw.githubusercontent.com/alejandromunozc/EventApp/frontend/src/assets/img/template-classic.png"
+                    src="https://raw.githubusercontent.com/alejandromunozc/EventApp/frontend/src/assets/img/template-classic.png" // Utilizar CDN
                     alt="Classic"
                   />
                   <Link

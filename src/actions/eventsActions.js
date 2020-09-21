@@ -10,7 +10,7 @@ import {
 
 export const eventCreation = (event) => (dispatch) => {
   const BASE_URL = "http://eventapp.koalab.tech/api/events/";
-  // const BASE_URL = "http://localhost:3001/api/events";
+  // const BASE_URL = "http://localhost:3001/api/events"; // Eliminar comentario, utilizar un switch desde las variables de entorno para activarlo desde el valor development // production
 
   const data = JSON.stringify({
     name: event.name,

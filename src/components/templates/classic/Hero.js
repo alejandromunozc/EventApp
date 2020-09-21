@@ -37,6 +37,7 @@ const Hero = (props) => {
                   isOpen={props.modalIsOpen}
                   onClose={props.onCloseModal}
                 /> */}
+                {/* Eliminar comentarios */}
                 <h1 className="classic__hero--title">{eventTitle}</h1>
                 <div className="classic__hero--details-location">
                   <div className="classic__location--icon">

@@ -46,6 +46,7 @@ const Login = (props) => {
               <form className="login__form--fields" onSubmit={handleSubmit}>
                 <div className="login__field--email">
                   <label>Work email</label>
+                  {/* Es preferible marcar saltos de linea desde el CSS */}
                   <br />
                   <input
                     onChange={handleInput}
@@ -57,6 +58,7 @@ const Login = (props) => {
                 </div>
                 <div className="login__field--password">
                   <label>Password</label>
+                  {/* Es preferible marcar saltos de linea desde el CSS */}
                   <br />
                   <input
                     onChange={handleInput}

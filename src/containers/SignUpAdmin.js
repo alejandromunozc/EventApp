@@ -7,7 +7,7 @@ import { signUpRequest } from "../actions/usersActions";
 import "../assets/styles/components/Login.css";
 
 import logoApp from "../assets/static/logo.png";
-import iconUser from "../assets/static/icons8-user-male.svg";
+import iconUser from "../assets/static/icons8-user-male.svg"; // Utilizar un CDN para estos estaticos
 
 import HeaderLogo from "../components/HeaderLogo";
 

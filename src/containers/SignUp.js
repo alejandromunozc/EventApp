@@ -7,47 +7,46 @@ import logoApp from "../assets/static/logo.png";
 
 import HeaderLogo from "../components/HeaderLogo";
 
-const Signup = () => {
-  return (
-    <>
-      <HeaderLogo />
-      <section className="welcome">
-        <div className="container">
-          <div className="welcome__content">
-            <div className="welcome__header">
-              <h3 className="welcome__title">Welcome to</h3>
+// Si no tienes una logica puedes utilizar el uso de Retorno implícito
+const Signup = () => (
+  <>
+    <HeaderLogo />
+    <section className="welcome">
+      <div className="container">
+        <div className="welcome__content">
+          <div className="welcome__header">
+            <h3 className="welcome__title">Welcome to</h3>
+            <img
+              className="welcome__logo"
+              src={logoApp}
+              alt="logo event app"
+            />
+          </div>
+          <div className="welcome__options">
+            <Link className="welcome__options--item" to="/signup/admin">
               <img
-                className="welcome__logo"
-                src={logoApp}
-                alt="logo event app"
+                src="https://img.icons8.com/bubbles/100/000000/admin-settings-male.png"
+                alt="admin img"
               />
-            </div>
-            <div className="welcome__options">
-              <Link className="welcome__options--item" to="/signup/admin">
-                <img
-                  src="https://img.icons8.com/bubbles/100/000000/admin-settings-male.png"
-                  alt="admin img"
-                />
-                <p>
-                  Are you the <b>Event Owner</b>?
+              <p>
+                Are you the <b>Event Owner</b>?
                 </p>
-              </Link>
-              <Link className="welcome__options--item" to="/signup/organizer">
-                <img
-                  src="https://img.icons8.com/bubbles/100/000000/lady-with-a-canlendar.png"
-                  alt="organizer img"
-                />
-                <p>
-                  Are you <strong>part of the organization</strong> of the
+            </Link>
+            <Link className="welcome__options--item" to="/signup/organizer">
+              <img
+                src="https://img.icons8.com/bubbles/100/000000/lady-with-a-canlendar.png"
+                alt="organizer img"
+              />
+              <p>
+                Are you <strong>part of the organization</strong> of the
                   event?
                 </p>
-              </Link>
-            </div>
+            </Link>
           </div>
         </div>
-      </section>
-    </>
-  );
-};
+      </div>
+    </section>
+  </>
+);
 
 export default Signup;

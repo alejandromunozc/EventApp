@@ -43,7 +43,6 @@ const EventModule = (props) => {
         <h2 className="header__user--name" href="/">
           {userName}
         </h2>
-
         <span className="header__user--icon">
           <img
             src="https://img.icons8.com/bubbles/100/000000/admin-settings-male.png"
@@ -90,7 +89,7 @@ const EventModule = (props) => {
                     placeholder="event.app/organization-name/event-name"
                     type="text"
                     name="event_url"
-                    // value={`event.app/${userOrganization.toLowerCase()}/`}
+                  // value={`event.app/${userOrganization.toLowerCase()}/`} ELiminar comentarios
                   />
                 </div>
                 <div className="createEvent__field createEvent__field--location">
@@ -156,6 +155,7 @@ const EventModule = (props) => {
   );
 };
 
+// No dejar comentarios
 // const mapStateToProps = (usersReducer) => {
 //   return {
 //     user: usersReducer.user,

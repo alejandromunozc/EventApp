@@ -11,8 +11,8 @@ import reducers from "./reducers";
 import "./assets/styles/App.css";
 
 const store = createStore(
-  reducers, // all reducers
-  {}, // Initial state
+  reducers, // all reducers // Eliminar comentarios
+  {}, // Initial state // Eliminar comentarios
   applyMiddleware(reduxThunk)
 );
 

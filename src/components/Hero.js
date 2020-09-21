@@ -7,6 +7,7 @@ import iconLogo from "../assets/static/icon.png";
 
 function Hero() {
   return (
+    // React fragments
     <div>
       <section className="hero">
         <div className="container">
